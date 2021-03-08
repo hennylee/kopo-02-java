@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Java-Lecture\kopo-02-java\_code\.metadata\.plugins\org.eclipse.jdt.core
+370407191.index
+2473829642.index
