@@ -3,8 +3,8 @@ package kr.ac.kopo.day02;
 import java.util.Scanner;
 
 /*
- * q. ÁÁ¾ÆÇÏ´Â °èÀıÀ» ÀÔ·ÂÇÏ¼¼¿ä
- * a. º½Àº 3~5¿ùÀÔ´Ï´Ù.
+ * q. ì¢‹ì•„í•˜ëŠ” ê³„ì ˆì„ ì…ë ¥í•˜ì„¸ìš”
+ * a. ë´„ì€ 3~5ì›”ì…ë‹ˆë‹¤.
  * 
  */
 
@@ -14,19 +14,19 @@ public class SwitchMain02 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("ÁÁ¾ÆÇÏ´Â °èÀıÀ» ÀÔ·ÂÇÏ¼¼¿ä : ");
+		System.out.println("ì¢‹ì•„í•˜ëŠ” ê³„ì ˆì„ ì…ë ¥í•˜ì„¸ìš” : ");
 		String season = sc.nextLine();
 		System.out.println();
 		
 		switch(season) {
 		case "spring" :
 		case "SPRING" :
-		case "º½" :
-			System.out.println("º½Àº 3~5¿ù±îÁö ÀÔ´Ï´Ù.");
+		case "ë´„" :
+			System.out.println("ë´„ì€ 3~5ì›”ê¹Œì§€ ì…ë‹ˆë‹¤.");
 		
 		case "summer" :
 		case "SUMMER" :
-		case "¿©¸§" :
+		case "ì—¬ë¦„" :
 		}
 	}
 
