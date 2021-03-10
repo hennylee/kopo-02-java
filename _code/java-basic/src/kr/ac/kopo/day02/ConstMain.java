@@ -5,13 +5,13 @@ public class ConstMain {
 		
 		char ch = 'A';
 		ch = 65; 
-		ch = '\u0041'; // À¯´ÏÄÚµå 65ÀÎ ¹®ÀÚ¸¦ ch¿¡ ÀúÀå (16Áø¼ö ÇüÅÂ·Î Ç¥Çö)
+		ch = '\u0041'; // ìœ ë‹ˆì½”ë“œ 65ì¸ ë¬¸ìë¥¼ chì— ì €ì¥ (16ì§„ìˆ˜ í˜•íƒœë¡œ í‘œí˜„)
 		System.out.println(ch);
 		
 		int code = ch;
 		System.out.println(code);
 		
-		// charÀÇ Á¤¼ö°ªÀ» ¾Ë°í½Í´Ù¸é? Çüº¯È¯À» ÇÏ¸é µÈ´Ù. 
+		// charì˜ ì •ìˆ˜ê°’ì„ ì•Œê³ ì‹¶ë‹¤ë©´? í˜•ë³€í™˜ì„ í•˜ë©´ ëœë‹¤. 
 		System.out.println((int)ch);
 		
 	}

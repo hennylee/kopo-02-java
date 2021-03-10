@@ -1,8 +1,8 @@
-package kr.ac.kopo.practice;
+package kr.ac.kopo.day02.homework;
 
 import java.util.Scanner;
 
-public class Day02_Exam04 {
+public class HomeworkMain04 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class Day02_Exam04 {
 		// 조건연산자
 		System.out.println("<조건연산자>");
 		System.out.print(num1 + "이 " + num2 + "의 배수인지 판단결과 : ");
-		System.out.println(num2 <= 0? "false" : (num1 % num2 == 0?"true":"false"));
+		System.out.println(num2 <= 0? "false" : (num1 % num2 == 0? "true" : "false"));
 		
 		
 		// if문
@@ -34,6 +34,18 @@ public class Day02_Exam04 {
 			}
 		}
 		
+		// 정답------------------------------------------------------------------------------------------
+		
+		/* 결과가 어차피 true와 false로 나오니까  
+		 * 굳이 세 가지 경우로 나누지 않아도 된다.
+		 */
+		
+		boolean bool = num2 > 0 && num1 % num2 == 0;
+		
+		System.out.print(num1 + "이 " + num2 + "의 배수인지 판단결과 : ");
+		System.out.println(bool);
+		
+		// --------------------------------------------------------------------------------------------
 		
 	}
 

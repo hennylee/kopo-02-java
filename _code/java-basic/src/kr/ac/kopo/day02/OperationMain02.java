@@ -7,15 +7,15 @@ public class OperationMain02 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		// "Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä" ¹®Àå Ãâ·Â
-		System.out.print("Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+		// "ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”" ë¬¸ì¥ ì¶œë ¥
+		System.out.print("ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 		
-		// Å°º¸µå·Î Á¤¼ö ÀÔ·Â¹Ş±â
+		// í‚¤ë³´ë“œë¡œ ì •ìˆ˜ ì…ë ¥ë°›ê¸°
 		int num = sc.nextInt();
 		
-		// °á°ú Ãâ·Â
+		// ê²°ê³¼ ì¶œë ¥
 		boolean result = (num > 0 && num % 2 == 0); 
-		System.out.println(num + "ÀÇ Â¦¼ö À¯¹« : " + result);
+		System.out.println(num + "ì˜ ì§ìˆ˜ ìœ ë¬´ : " + result);
 		
 		sc.close();
 	}

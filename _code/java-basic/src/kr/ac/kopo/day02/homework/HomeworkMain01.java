@@ -1,8 +1,8 @@
-package kr.ac.kopo.practice;
+package kr.ac.kopo.day02.homework;
 
 import java.util.Scanner;
 
-public class Day02_Exam01 {
+public class HomeworkMain01 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 

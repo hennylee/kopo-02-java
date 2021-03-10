@@ -3,11 +3,11 @@ package kr.ac.kopo.day02;
 import java.util.Scanner;
 
 /*
- * 1ºÎÅÍ 3 »çÀÌÀÇ ¼ıÀÚ¸¦ ÀÔ·Â¹Ş±â
+ * 1ë¶€í„° 3 ì‚¬ì´ì˜ ìˆ«ìë¥¼ ì…ë ¥ë°›ê¸°
  * 
- * ÀÔ·Â¹ŞÀº ¼ıÀÚÀÇ ¿µ¾îÇ¥±â Ãâ·ÂÇÏ±â
+ * ì…ë ¥ë°›ì€ ìˆ«ìì˜ ì˜ì–´í‘œê¸° ì¶œë ¥í•˜ê¸°
  * 
- * ¹üÀ§¸¦ ÃÊ°úÇÏ¸é error Ãâ·Â¹Ş±â
+ * ë²”ìœ„ë¥¼ ì´ˆê³¼í•˜ë©´ error ì¶œë ¥ë°›ê¸°
  * */
 
 public class SwitchMain01 {
@@ -15,10 +15,10 @@ public class SwitchMain01 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("1 - 3 »çÀÌÀÇ Á¤¼ö : ");
+		System.out.println("1 - 3 ì‚¬ì´ì˜ ì •ìˆ˜ : ");
 		int num = sc.nextInt();
 		
-		// if ~ else¹®
+		// if ~ elseë¬¸
 		if(num == 1) {
 			System.out.println("ONE");
 		} else if(num == 2) {
@@ -29,7 +29,7 @@ public class SwitchMain01 {
 		System.out.println("ERROR");
 		}
 		
-		// switch¹®
+		// switchë¬¸
 		switch(num) {
 		case 1:
 			System.out.println("ONE");
