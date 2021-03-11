@@ -82,14 +82,14 @@ public class ExamMain01 {
 				for(int j = 0; j < i - 1; j++) {
 					System.out.print(' ');
 				}
-				for(int j = 6 - i; j >= 1; j--) {
+				for(int j = 6 - i; j >= 1; j--) { // int j = 0 으로 시작하는 것이 가독성이 더 좋다. 
 					System.out.print('*');
 				}
 			} else {
 				for(int j = 0; j < 9 - i; j++) {
 					System.out.print(' ');
 				}
-				for(int j = 10 - i ; j <= 5 ; j++) {
+				for(int j = 10 - i ; j <= 5 ; j++) {	// int j = 0 으로 시작하는 것이 가독성이 더 좋다. 
 					System.out.print('*');
 				}
 			}
