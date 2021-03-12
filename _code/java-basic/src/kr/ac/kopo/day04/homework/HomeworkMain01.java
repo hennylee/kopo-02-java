@@ -1,4 +1,4 @@
-package kr.ac.kopo.homework;
+package kr.ac.kopo.day04.homework;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
    
    39  12  7
    
-
+=> 조건문 5개 
 
  */
 public class HomeworkMain01 {
@@ -23,6 +23,19 @@ public class HomeworkMain01 {
 		int num3 = sc.nextInt();
 	
 		sc.close();
+		
+		// num1이 가장 클 때
+		if(num1 > num2 && num1 > num3) {
+			
+		}
+		// num2이 가장 클 때
+		else if(num2 > num1 && num2 > num3) {
+			
+		}
+		// num3이 가장 클 때
+		else if(num3 > num1 && num3 > num2) {
+			
+		}
 		
 		
 

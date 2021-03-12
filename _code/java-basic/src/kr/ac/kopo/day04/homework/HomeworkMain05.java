@@ -1,4 +1,4 @@
-package kr.ac.kopo.homework;
+package kr.ac.kopo.day04.homework;
 /*
 
 5. 2 ~ 100사이의 소수를 출력
@@ -12,7 +12,7 @@ package kr.ac.kopo.homework;
 public class HomeworkMain05 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 소수? 나눠지지 않을때까지...
 
 	}
 

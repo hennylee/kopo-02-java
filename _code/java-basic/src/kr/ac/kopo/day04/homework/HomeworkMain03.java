@@ -1,4 +1,4 @@
-package kr.ac.kopo.homework;
+package kr.ac.kopo.day04.homework;
 /*
 
    
@@ -18,7 +18,16 @@ package kr.ac.kopo.homework;
 public class HomeworkMain03 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int height = 0;
+		int hour = 5;
+		
+		if( height < 50) {
+			height += (hour * 4);
+		} else {
+			height += (hour * 3);
+		}
+		
+		System.out.println(height);
 
 	}
 

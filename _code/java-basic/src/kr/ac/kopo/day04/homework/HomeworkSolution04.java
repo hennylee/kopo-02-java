@@ -1,4 +1,4 @@
-package kr.ac.kopo.homework;
+package kr.ac.kopo.day04.homework;
 /*
    
    
@@ -11,10 +11,14 @@ package kr.ac.kopo.homework;
 	
 	
  */
-public class HomeworkMain04 {
+public class HomeworkSolution04 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int num = 33;
+		
+		if(num % 2 == 0 || num % 3 == 0) {
+			
+		}
 
 	}
 

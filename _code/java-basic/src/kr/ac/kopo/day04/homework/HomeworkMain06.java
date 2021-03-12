@@ -1,4 +1,7 @@
-package kr.ac.kopo.homework;
+package kr.ac.kopo.day04.homework;
+
+import java.util.Scanner;
+
 /*
 
 6. 10개의 정수를 입력받아 다음과 같이 출력하는 코드를 작성		
@@ -25,7 +28,19 @@ package kr.ac.kopo.homework;
 public class HomeworkMain06 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		
+		int num = sc.nextInt();
+		int sum = 0;
+		int sum2 = 0;
+		for(int i = 1; i < 10; i++) {
+			
+			if(num % 2 == 0) sum += num;
+			else sum2 += num;
+			num = sc.nextInt();
+		}
+		System.out.println("짝수 총합 : "+ sum);
+		System.out.println("홀수 총합 : "+ sum2);
 
 	}
 
