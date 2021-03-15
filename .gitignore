@@ -1,12 +1,15 @@
 _code/.metadata
-_code/.metadata
 _code/bin/
 _code/tmp/
 _code/*.tmp
-*.bak
+_code/*.bak
 _code/*.swp
 _code/*~.nib
 _code/local.properties
 _code/.settings/
 _code/.loadpath
 _code/.recommenders
+_code/.classpath
+_code/.project
+_code/.recommenders
+_code/.doc/

@@ -1,6 +1,6 @@
 package kr.ac.kopo.day05.homework;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 /*
 	
@@ -20,27 +20,47 @@ import java.util.Scanner;
 	어떤 수가 소수인지 알아보려면 자기 앞에 있는 소수로 나누어보면 된다.
 	prime 배열에 소수를 담아라...? 1부터 loop 돌아가면서???
 	이 과정을 코드로 구현해 보아라
+	
+	
+	
+	
+	2
+	소수로 나누어 떨어지니? prime 없으니까 no?
+	prime = 2
+	
+	
+	
+	3
+	prime[0]으로 나누어 떨어지니? no
+	prime[1] = 3
+	
+	=> prime = 2, 3
+	
+	
+	4
+	prime[0] or prime[1]으로 나누어 떨어지니? yes
+	pass
+	prime = 2, 3
+	
+	
+	
+	5
+	prime[0] or prime[1]으로 나누어 떨어지니? no
+	prime[2] = 5;
+	=> prime = 2,3,5
+	
+	
+	
+	6
+	prime[0] or prime[1] or prime[2]로 나누어 떨어니지? yes
+	pass
+	prime = 2, 3, 5
+	
 
  */
 public class HomeworkMain03 {
 
 	public static void main(String[] args) {
-		int[] prime = new int[30];
-		int loc = 0;
-		
-		for(int num = 2; num <= 100; num++) {
-			boolean flag = true;
-			
-			for(int i = 0; i < loc; i++) {
-				if(num % prime[i] == 0) {
-					flag = false;
-					break;
-				}
-			}
-			
-			
-		}
-		
 		
 
 	}

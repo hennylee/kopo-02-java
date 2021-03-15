@@ -1,6 +1,5 @@
 package kr.ac.kopo.day05.homework;
 
-import java.util.Arrays;
 
 /*
 	
@@ -35,34 +34,7 @@ import java.util.Arrays;
 public class HomeworkMain04 {
 
 	public static void main(String[] args) {
-		
-		int[] arr = new int[99];
-		
-		Arrays.fill(arr, 1);
-		
-		// 배열에 숫자 채워넣기
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = i+2;
-		}
-		//System.out.println(Arrays.toString(arr));
-		
-		for(int i = 0; i < arr.length; i++ ) {
-			if(arr[i] != 0) {
-				for(int j = i+1; j < arr.length; j++) {
-					if(arr[j] % arr[i] == 0) {
-						arr[j] = 0;
-					}
-				}
-			}
-		}
-		
-		//System.out.println(Arrays.toString(arr));
-		
-		for(int num: arr) {
-			if(num != 0) {
-				System.out.print(num +"  ");
-			}
-		}
+	
 		
 	}
 
