@@ -78,7 +78,6 @@ public class HomeworkMain01 {
 				 2		2
 				 3		1
 				 4		0
-				 
 		 */
 		
 		System.out.println("< REVERSE >");

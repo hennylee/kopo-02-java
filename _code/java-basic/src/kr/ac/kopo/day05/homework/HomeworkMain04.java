@@ -25,7 +25,12 @@ import java.util.Arrays;
 	num 	2	3	4	5	6	....... 100
 	
 	
-
+	for문을 돌릴 때 상수 대신 length를 쓰는 편이 유지보수에 좋다. 
+	
+	
+	각 index의 값이 소수인지 확인할 필요 없다
+	왜냐하면 index의 값이 0으로 바뀌지 않았다면 소수라는 뜻이기 때문이다. 
+	맨처음 2는 index값이 없나,,,?
  */
 public class HomeworkMain04 {
 
@@ -35,15 +40,29 @@ public class HomeworkMain04 {
 		
 		Arrays.fill(arr, 1);
 		
-		// 0번지에 있는 수가 소수인지 확인하고 배수를 다 0으로 바꾸기
-		int num = 2;
+		// 배열에 숫자 채워넣기
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = i+2;
+		}
+		//System.out.println(Arrays.toString(arr));
 		
-		arr[num - 2] = 0;
+		for(int i = 0; i < arr.length; i++ ) {
+			if(arr[i] != 0) {
+				for(int j = i+1; j < arr.length; j++) {
+					if(arr[j] % arr[i] == 0) {
+						arr[j] = 0;
+					}
+				}
+			}
+		}
 		
-		System.out.println(Arrays.toString(arr));
+		//System.out.println(Arrays.toString(arr));
 		
-		
-		
+		for(int num: arr) {
+			if(num != 0) {
+				System.out.print(num +"  ");
+			}
+		}
 		
 	}
 

@@ -41,39 +41,50 @@ public class HomeworkMain02 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int[] evenArr = new int[evenCount];	// 짝수 배열
-		int[] oddArr = new int[oddCount]; 	// 홀수 배열
+		int[] nums = new int[evenCount + oddCount];	// 짝수 배열
+		
+		/* (교슈님 풀이) 두 개를 따로 받지 않고 같이 받을 수도 있다.
+		 * 짝수는 0번지부터, 홀수는 마지막(length -1)번지부터 거꾸로 들어가기
+		 */
 		
 		// 입력 받기
 		System.out.println("정수를 입력하세요");
 		
 		int evenIndex = 0;
-		int oddIndex = 0;
+		int oddIndex = nums.length - 1;
 		
-		for(int i = 0; i < evenCount + oddCount; i++) {
+		
+		// while(oddIndex >= evenIndex) {
+		for(int i = 0; i < nums.length; i++) {
+			System.out.print("num " + (i+1) + ": ");
 			int input = sc.nextInt();
 			
 			// 짝수일때
 			
 			if(input % 2 == 0 && evenIndex < evenCount) {
-				evenArr[evenIndex] = input;
-				evenIndex++;
+				nums[evenIndex++] = input;
 				
-			}
-			// 홀수일때
-			
-			if(input % 2 != 0 && oddIndex < oddCount) {
-				oddArr[oddIndex] = input;
-				oddIndex++;
+			} else if(input % 2 == 1 && oddIndex >= evenCount) {
+				nums[oddIndex--] = input;
+			} else {
+				i--;
 			}
 			
 		}
 		
-		System.out.println(Arrays.toString(evenArr));
-		System.out.println(Arrays.toString(oddArr));
+		System.out.println("<총 정수>");
+		for(int num : nums) {
+			System.out.print(num + "  ");
+		}
+		
+		
+		
 		
 		/*
 		 * 지금 evenCount를 evenIndex가 초과했을때 새로운 값을 받는 코드가 없음
+		 * 
+		 * 짝수의 index는 nums[0] ~ nums[evenNuym - 1]
+		 * 홀수의 index는 nums[evenNum] ~ nums[nums.length - 1]
 		 * 
 		 * 
 		 */
