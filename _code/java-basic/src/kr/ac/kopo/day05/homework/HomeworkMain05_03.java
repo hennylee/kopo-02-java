@@ -31,31 +31,34 @@ public class HomeworkMain05_03 {
 		int lines = sc.nextInt();
 		if(lines % 2 == 0) lines--;
 		
-		int total = lines;
+		int total = lines;		// 총 라인수
+		int center = lines/2;	// 중간 라인
+		int blank = 0;			// 공백의 갯수
 		
-		for(int i = 0; i < lines; i++) {
+
+		// lines 수만큼 행을 출력한다
+		for(int i = 0; i< lines; i++) {
 			
-			if(i < (lines/2)) {
-				for(int j = 0; j < total; j++) {
-					if(j < i) {
-						System.out.print(' ');
-					}else {
-						System.out.print('*');
-					}
+			// 한줄씩 공백과 별을 출력한다.
+			for(int j = 0; j < total; j++) {
+				if(j < blank) {
+					System.out.print(' ');
+				} else {
+					System.out.print('*');
 				}
-				total--;
-			} else {
-				for(int j = 0; j < total; j++) {
-					if(j < (8 -i)) {
-						System.out.print(' ');
-					}else {
-						System.out.print('*');
-					}
-				}
-				total++;
 			}
 			System.out.println();
+				
+			// 기호의 총 갯수 조절하기
+			if(i < center) {
+				total--;
+				blank++;
+			}else {
+				total++;
+				blank--;
+			}
 		}
+		
 		
 	}
 
