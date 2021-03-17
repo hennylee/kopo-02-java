@@ -3,14 +3,24 @@ package kr.ac.kopo.day08;
 public class StringMain01 {
 
 	public static void main(String[] args) {
+	
 		// 아래 객체들은 메모리 구조가 들리다. 
 		String str = new String();
 		String str1 = "";
 		String str2 = null;
+		
 		System.out.println("str : " + str);
 		System.out.println("str1 : " + str1);
 		System.out.println("str2 : " + str2);
 		
+		System.out.println(System.identityHashCode(str));
+		System.out.println(str.hashCode());
+		
+		System.out.println(System.identityHashCode(str1));
+		System.out.println(str1.hashCode());
+		
+		System.out.println(System.identityHashCode(str2));
+		//System.out.println(str2.hashCode());
 		
 		// char[]로 만든 String객체
 		char[] chars = {'A','B','C','D','E'};
@@ -29,7 +39,6 @@ public class StringMain01 {
 		// heap영역의 다른 "Hello"객체를 가리킴
 		String s7 = new String("Hello");
 		String s8 = new String("Hello");
-		
 		
 	}
 
