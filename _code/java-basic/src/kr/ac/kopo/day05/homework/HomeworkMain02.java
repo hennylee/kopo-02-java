@@ -30,64 +30,46 @@ import java.util.Scanner;
 	num9 : 6
 	
 	< PRINT >
-	12  20  24  10  6  31  9  67  9
+	
+	0	1	2	3	4	5	6	7	8
+	---------------------------------
+	
+	12  20  24  10  6  	31  9  	67  9
+	
+	<--------------짝수 | 홀수--------->
 
 */
 public class HomeworkMain02 {
 
 	public static void main(String[] args) {
-		int evenCount = 5; 	// 짝수의 갯수
-		int oddCount = 4;	// 홀수의 갯수
 		
+		// 갯수 입력 받기
 		Scanner sc = new Scanner(System.in);
 		
-		int[] nums = new int[evenCount + oddCount];	// 짝수 배열
+		System.out.print("짝수 몇개 입력 : ");
+		int evenNum = sc.nextInt();
 		
-		/* (교슈님 풀이) 두 개를 따로 받지 않고 같이 받을 수도 있다.
-		 * 짝수는 0번지부터, 홀수는 마지막(length -1)번지부터 거꾸로 들어가기
-		 */
+		System.out.print("홀수 몇개 입력 : ");
+		int oddNum = sc.nextInt();
 		
-		// 입력 받기
-		System.out.println("정수를 입력하세요");
+		int[] arr = new int[evenNum + oddNum];
 		
-		int evenIndex = 0;
-		int oddIndex = nums.length - 1;
-		
-		
-		// while(oddIndex >= evenIndex) {
-		for(int i = 0; i < nums.length; i++) {
-			System.out.print("num " + (i+1) + ": ");
-			int input = sc.nextInt();
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print("num" + (i+1) + " : ");
 			
-			// 짝수일때
+			int num = sc.nextInt();
 			
-			if(input % 2 == 0 && evenIndex < evenCount) {
-				nums[evenIndex++] = input;
-				
-			} else if(input % 2 == 1 && oddIndex >= evenCount) {
-				nums[oddIndex--] = input;
+			if(num % 2 == 0 && i < evenNum) {
+				arr[i] = num;
+			} else if(num % 2 != 0 && i >= evenNum) {
+				arr[i] = num;
 			} else {
 				i--;
 			}
-			
 		}
 		
-		System.out.println("<총 정수>");
-		for(int num : nums) {
-			System.out.print(num + "  ");
-		}
+		System.out.println(Arrays.toString(arr));
 		
-		
-		
-		
-		/*
-		 * 지금 evenCount를 evenIndex가 초과했을때 새로운 값을 받는 코드가 없음
-		 * 
-		 * 짝수의 index는 nums[0] ~ nums[evenNuym - 1]
-		 * 홀수의 index는 nums[evenNum] ~ nums[nums.length - 1]
-		 * 
-		 * 
-		 */
 		
 
 	}
