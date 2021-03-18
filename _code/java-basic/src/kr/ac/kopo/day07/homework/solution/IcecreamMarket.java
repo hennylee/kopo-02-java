@@ -13,6 +13,7 @@ public class IcecreamMarket {
 	// 소비자가 구매할 정보 입력 => Icecream.java 클래스에서 입력 받아도 된다. 
 	Scanner sc = new Scanner(System.in);
 	
+	// 숫자 입력
 	int inputInt(String msg) {
 		System.out.print(msg);
 		int num = sc.nextInt();
@@ -20,6 +21,7 @@ public class IcecreamMarket {
 		return num;
 	}
 	
+	// 문자열 입력
 	String inputString(String msg) {
 		System.out.print(msg);
 		String str = sc.nextLine();
@@ -37,6 +39,7 @@ public class IcecreamMarket {
 		info();
 	}
 	
+	// 구매정보 출력
 	void info() {
 		System.out.println("<총 " + iceArr.length + "개 구매 정보 출력>");
 		System.out.println("번호\t아이스크림\t아이스크림가격");
@@ -58,7 +61,7 @@ public class IcecreamMarket {
 	}
 	
 	/**
-	 * 아이스크림 구매와 관련된 메소드
+	 * 아이스크림 구매 정보 입력과 관련된 메소드
 	 */
 	void buy() {
 		
@@ -75,12 +78,23 @@ public class IcecreamMarket {
 			iceArr[i] = new Icecream(); 
 			
 			// 아이스크림 정보 입력받기
-			String name = inputString("아이스크림명 : ");
-			int price = inputInt("아이스크림가격 : ");
+			
+			/*
+			 * String name = inputString("아이스크림명 : "); 
+			 * int price = inputInt("아이스크림가격 : ");
+			 */ 
+			 
+			/**
+			 * 생성자로 대체해보기!
+			 */
+			iceArr[i] = new Icecream(inputString("아이스크림명 : "), inputInt("아이스크림가격 : "));
+			
+			
 			
 			// 아이스크림 객체에 입력받은 정보 넣기 : set 메소드는 Icecream 클래스에 정의되어 있어야한다. 
-			iceArr[i].set(name, price);
-			
+			/*
+			 * iceArr[i].set(name, price);
+			 */
 		}
 	}
 	

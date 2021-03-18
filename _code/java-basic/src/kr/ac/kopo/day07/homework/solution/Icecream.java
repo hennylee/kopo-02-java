@@ -19,6 +19,16 @@ public class Icecream {
 	String name;
 	int price;
 	
+	Icecream(){
+		
+	}
+	
+	
+	Icecream(String n, int p){
+		set(n, p);
+	}
+	
+	
 	// 입력받은 정보 Icecream객체에 넣는 메소드
 	void set(String n, int p) {
 		name = n;
