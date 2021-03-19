@@ -91,7 +91,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * 문자열을 입력받아 대문자로 변경하는 메소드
+	 * 문자열을 입력받아 대문자로 변경하는 메소드 (교수님 수정본)
 	 * @param str
 	 * @return
 	 */
@@ -101,20 +101,15 @@ public class StringUtil {
 		
 		for(int i = 0; i < str.length(); i++) {
 			
-			char c = str.charAt(i);
+			temp[i] = str.charAt(i);
 			
-			if( c > 96 && c < 123) {
-				c -= 32;
-				temp[i] = c;
-			} else {
-				temp[i] = c;
-			}
-			
-			System.out.print(temp[i]);
+			if( temp[i] >= 'a' && temp[i] <= 'z') {
+				temp[i] -= ('a' - 'A');
+			} 
 	
 		}
 		
-		return temp.toString();
+		return new String(temp);
 		
 	}
 	
@@ -124,6 +119,63 @@ public class StringUtil {
 	 * @return
 	 */
 	String toLowerString(String str) {
+		char[] temp = new char[str.length()];		
+		
+		for(int i = 0; i < str.length(); i++) {
+			
+			char c = str.charAt(i);
+			
+			if( c > 'A' && c < 'Z') {
+				c += 32;
+				temp[i] = c;
+			} else {
+				temp[i] = c;
+			}
+	
+		}
+		
+		return temp.toString();
+	}
+	
+	
+	/**
+	 * 특정 문자의 갯수 찾는 메소드
+	 * @param strData
+	 * @param ch
+	 * @return
+	 */
+	public static int checkChar(String strData, char ch) {
+
+		int count = 0;
+		for(int i = 0; i < strData.length();i++) {
+			char c = strData.charAt(i);			
+			
+			if(c == ch) {
+				count++;
+			}
+			
+		}
+		return count;
+		
+	}
+	
+	/**
+	 * 특정 문자를 제거하기
+	 * @param oriStr
+	 * @param delChar
+	 * @return
+	 */
+	public static String removeChar(String oriStr, char delChar) {
+		
+		String change = "";
+		
+		for(int i = 0; i < oriStr.length(); i++) {
+			if(oriStr.charAt(i) != delChar) {
+				change += oriStr.charAt(i);
+			}
+			
+		}
+		return change;
 		
 	}
 

@@ -5,24 +5,17 @@ import java.util.Arrays;
 public class StringUtilMain {
 
 	public static void main(String[] args) {
-		String str = "abCCCCdDe";
+		String oriStr = "abcdANDaJdil";
+		char delChar = 'a';
+		String change = "";
 		
-		char[] temp = new char[str.length()];		
-		
-		for(int i = 0; i < str.length(); i++) {
-			
-			char c = str.charAt(i);
-			
-			if( c > 96 && c < 123) {
-				c -= 32;
-				temp[i] = c;
-			} else {
-				temp[i] = c;
+		for(int i = 0; i < oriStr.length(); i++) {
+			if(oriStr.charAt(i) != delChar) {
+				change += oriStr.charAt(i);
 			}
 			
-			System.out.print(temp[i]);
-	
 		}
+		
 		
 	}
 
