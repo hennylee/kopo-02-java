@@ -97,6 +97,9 @@ public void print(int no) {
 
 ### HP가 잉크젯과 레이저 사업부로 분사된 경우 : package kr.ac.kopo.day11.abs03
 
+![image](https://user-images.githubusercontent.com/77392444/111951728-64705180-8b27-11eb-827d-acb26588488b.png)
+
+
 ## 객체형변환
 - 다형성의 기본 원리가 바로 객체 형변환이다.
 
