@@ -1,11 +1,13 @@
 package kr.ac.kopo.day11.homework;
-
+/**
+ * ChoiceShape의 실행 클래스
+ * {@link ChoiceShape}
+ * @author HP
+ *
+ */
 public class ShapeMain {
 	
 	public static void main(String[] args) {
-		Shape circle = new Circle();
-		Shape square = new Square();
-		Shape rectangle = new Rectangle();
-		Shape triangle = new Triangle();
+		ChoiceShape s = new ChoiceShape();
 	}
 }

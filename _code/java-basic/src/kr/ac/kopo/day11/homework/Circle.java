@@ -3,7 +3,7 @@ package kr.ac.kopo.day11.homework;
 public class Circle extends Shape{
 
 	final static double PI = Math.round(Math.PI);
-	int radius;
+	/* private */ int radius;
 	
 	@Override
 	public void getLength() {

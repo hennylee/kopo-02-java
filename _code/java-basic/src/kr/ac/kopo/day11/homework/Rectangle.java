@@ -2,8 +2,24 @@ package kr.ac.kopo.day11.homework;
 
 // 직사각형
 public class Rectangle extends Shape {
-	int base;
-	int height;
+	/* private */ int base;
+	/* private */ int height;
+
+	public int getBase() {
+		return base;
+	}
+
+	public void setBase(int base) {
+		this.base = base;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
 
 	@Override
 	public void getLength() {

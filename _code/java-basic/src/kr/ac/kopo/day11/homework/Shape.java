@@ -17,7 +17,7 @@ public abstract class Shape{
 	public abstract void getArea();
 	public abstract void info();
 	
-	int randomLine() {
+	public int randomLine() {
 		Random r = new Random();
 		
 		//nextInt() 에 숫자를 넣어주면, 0~num-1 까지의 범위에서 랜덤값을 추출한다.
@@ -25,6 +25,7 @@ public abstract class Shape{
 		
 		return line;
 	}
+	
 
 }
 
