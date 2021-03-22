@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 /*
  * 질문 !!! 
+ * 1. 도형을 선택하는 메소드를 생성자로 구현하는게 나은지 
+ * 2. 메소드로 구현하는게 나은지 궁금합니다!
  * 
- * 도형을 선택하는 클래스는 객체라기보다는 메소드만 있는 것 같은데 클래스를 따로 만드는게 맞나요?
  */
 
 
@@ -17,14 +18,21 @@ import java.util.Scanner;
  *
  */
 
-public class ChoiceShape {
+public class ShapeMenu {
 
-	public void ChoiceShape() {
+	public ShapeMenu() {
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("도형을 선택하세요(1. 직사각형, 2. 정사각형, 3.삼각형, 4.원) => ");
 		int choice = sc.nextInt();
 		sc.nextLine();
+		
+		
+		while(choice < 1 || choice > 4) {
+			System.out.println("1~4 사이의 숫자를 입력하세요");
+			break;
+			// 이렇게 범위를 벗어날 경우 다시 처음부터 실행시키려면 어떻게 하나요?
+		}
 		
 		switch (choice) {
 		case 1: 
@@ -41,6 +49,8 @@ public class ChoiceShape {
 			break;
 		}
 		
+		
 	}
+
 	
 }

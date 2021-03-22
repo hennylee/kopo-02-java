@@ -1,6 +1,10 @@
 package kr.ac.kopo.day11.homework;
 
-// 직사각형
+/**
+ * 직사각형 클래스
+ * @author iamsu
+ *
+ */
 public class Rectangle extends Shape {
 	/* private */ int base;
 	/* private */ int height;
@@ -34,7 +38,8 @@ public class Rectangle extends Shape {
 
 	@Override
 	public void info() {
-		System.out.println("밑변의 길이가 "+ base +", 높이가 "+ height+"인 직사각형의 넓이는 "+ dimensions+"이다.");
+		System.out.println("직사각형의 밑변의 길이는 "+ base +" 높이는 "+ height+"일 때, 넓이는 "+ dimensions+"이다.");
+		//System.out.print("넓이는 "+ dimensions + "이다.");
 		
 	}
 
