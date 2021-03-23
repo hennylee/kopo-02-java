@@ -3,23 +3,19 @@ package kr.ac.kopo.day12.homework;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ScissorsRockPaper extends GameMenu implements Game{
+public class ScissorsRockPaper implements Game{
+	
 	final static int SISSOR = 1;
 	final static int ROCK = 2;
 	final static int PAPER = 3;
-	int you;
-	
-	public ScissorsRockPaper() {
-		this.you = youSelect();
-		startGame(this.you);
-	}
 	
 	
 	/**
 	 * 사용자가 가위바위보 선택하는 메소드
 	 * @return 사용자가 선택한 것
 	 */
-	int youSelect() {
+	@Override
+	public int youSelect() {
 		System.out.println("가위바위보 게임입니다.");
 		
 		System.out.println("가위바위보 중 하나를 선택하세요.");
@@ -28,17 +24,17 @@ public class ScissorsRockPaper extends GameMenu implements Game{
 		
 		Scanner sc = new Scanner(System.in);
 		
-		you = sc.nextInt();
+		int you = sc.nextInt();
 		sc.nextLine();
 		
-		if(you < 1 | you >3) {
+		if(you < SISSOR | you > PAPER) {
 			System.out.println("다시 입력하세요.");
 			youSelect();
 		}
 		
 		return you;
-				
 	}
+	
 	
 	/**
 	 * 게임 실행하는 메소드
@@ -57,20 +53,26 @@ public class ScissorsRockPaper extends GameMenu implements Game{
 		if(temp == -1 || temp == 2) {
 			System.out.println("You win");
 			result = 1;
-			winScore++;
 		} 
 		// lose or draw
 		else {
-			if(temp == 1 || temp == -2) System.out.println("You lose");
+			// lose
+			if(temp == 1 || temp == -2) {
+				System.out.println("You lose");
+				result = 0;
+			}
+			// draw
 			else {
 				System.out.println("비겼습니다.");
-				drawScore++;
 			}
-			result = 0;
-			loseScore++;
 		}
+		
+		GameScore gs = new GameScore();
+		gs.countScore(result);
 		
 		return result;
 	}
+	
+	
 
 }

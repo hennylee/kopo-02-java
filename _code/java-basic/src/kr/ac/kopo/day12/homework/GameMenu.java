@@ -3,11 +3,10 @@ package kr.ac.kopo.day12.homework;
 import java.util.Scanner;
 
 public class GameMenu {
-
+	
 	char choice;
-	public static int winScore = 0;
-	public static int loseScore = 0;
-	public static int drawScore = 0;
+	GameScore gs = new GameScore();
+	int you;
 	
 	/**
 	 * 게임 선택하는 메소드
@@ -22,7 +21,7 @@ public class GameMenu {
 		choice = sc.next().charAt(0);
 		sc.nextLine();
 				
-		if(choice == 'A' | choice == 'B' | choice == 'C' ) {
+		if(choice == 'A' | choice == 'B' | choice == 'C' |choice == 'a' | choice == 'b' | choice == 'c') {
 			playGame(choice);
 		} 
 		else {
@@ -44,29 +43,26 @@ public class GameMenu {
 		switch (choice) {
 		case 'A' : 
 			g = new ScissorsRockPaper();
+			you = g.youSelect();		// 너가 고른 값
+			g.startGame(you);			
 			choiceGame();
 			
 			break;
 		case 'B' : 
 			g = new Dice();
-			choiceGame();
+			you = g.youSelect();		// 너가 고른 값
+			g.startGame(you);			// 게임 실행
+
+			choiceGame();				// 선택 재귀호출..?
 			break;
 		case 'C' : 
 			System.out.println("게임을 종료합니다.");
-			print();					   // 게임 전적 출력하는 메소드 실행
+			gs.printScore();				   // 게임 전적 출력하는 메소드 실행
 			break;
 		}	
 			
 	}
 	
 
-	/**
-	 * 게임 전적 기록을 출력하는 메소드이다.
-	 *
-	 */
-	void print() {
-		System.out.println("당신의 게임 전적은 " + winScore + "승 " + loseScore + "패 " + drawScore +"무입니다.");
-	}
-	
 	
 }
