@@ -39,7 +39,16 @@
 
 
 
-- 인터페이스를 클래스가 상속받을 때, `implements`키워드를 사용한다.
+
+## interface의 상속
+
+- interface는 다중 상속이 가능하다.
+
+- interface를 interface가 상속 받으면 `extends`키워드를 사용한다.
+
+
+
+- interface를 class 가 상속 받으면 `implements`키워드를 사용한다. 
 
 - 인터페이스를 상속받은 하위클래스는 인터페이스의 추상메소드를 반드시 `override`(재정의) 해야 한다.
 
@@ -66,3 +75,6 @@ class Main {
   }
 }
 ```
+
+
+- 인터페이스는 추상메소드와 상수만 가지고 있어야 하기 때문에 클래스를 상속받을 수 없다. 
