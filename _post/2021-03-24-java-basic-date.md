@@ -34,7 +34,7 @@ System.out.println("오늘은 "+ year + "년 " + month + "월 " + date + "일입
 
   - 하지만 Date클래스에서는 `toString()`을 override해서 날짜 정보를 반환하라고 설정했기 때문에 날짜 정보가 출력되는 것이다. 
 
-  - 이와 마찬가지고 String클래스에서도 `toString()`을 override했기 때문에 문자열 값 자체를 출력할 수 있게 된 것이다.
+  - 이와 마찬가지로 String클래스에서도 `toString()`을 override했기 때문에 문자열 값 자체를 출력할 수 있게 된 것이다.
 
 ## Calendar클래스
 - Calendar클래스는 추상클래스이기 때문에 자체만으론 인스턴스 객체를 만들 수 없다.
