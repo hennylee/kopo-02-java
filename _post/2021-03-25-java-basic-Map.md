@@ -16,7 +16,7 @@
 
 ## Map의 메소드
 
-- `put(K key, V value)` : key와 value쌍으로 데이터를 입력한다. 
+- `put(K key, V value)` : key와 value쌍으로 데이터를 입력한다. key가 중복되는 경우 새로운 값으로 업데이트하고 기존 값을 반환한다.
 
 - `get(Object key)` : key를 매개변수로 value값을 반환한다. 값이 없을 경우에는 null을 반환한다.
 
@@ -28,8 +28,24 @@
 
 - `putAll(Map<K key, V value> m)` : 
 
-- `Set<Map.Entry<K,V>>	entrySet()` : 
-
 - `getOrDefault` : 
 
 - `containsKey(Object key)`
+
+- `Set<Map.Entry<K,V>>	entrySet()` : 실제 데이터를 가지고 있는 `Map.Entry`의 `Set` 집합을 반환한다.
+
+```java
+class Map {
+  
+  // Entry : Map의 inner Class ==> Map.Entry
+  class Entry {
+    Object key;
+    Object value;
+  }
+
+}
+```
+
+- `keySet()`
+
+- Set이 검색속도를 빠르게 해주기 때문에 Set으로 변환해서 출력하는 것이다.
