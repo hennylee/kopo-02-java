@@ -1,4 +1,4 @@
-# [day09] java 기초 : Static
+# [day09] java-basic : Static
 
 ## static이란
 - static은 활용제한자이다.
