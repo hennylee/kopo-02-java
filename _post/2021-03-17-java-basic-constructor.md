@@ -1,4 +1,4 @@
-# [kopo/day08] java-basic : 생성자
+# [day08] java-basic : 생성자
 
 ## 생성자란?
 
