@@ -28,13 +28,13 @@
 
 - `remove(Object o)` : o라는 객체의 데이터를 삭제한다.
 
-- `clear()` : list에 들어있는 데이터를 모두 다 지워서 사이즈를 0으로 만든다. 
+- `clear()` : set에 들어있는 데이터를 모두 다 지워서 사이즈를 0으로 만든다. 
 
-- `boolean contains(Object o)` : 데이터 o가 있는지 없는지 boolean형태로 반환한다.
+- `boolean contains(Object o)` : 데이터 o가 있는지 없는지 확인해서 boolean형태로 반환한다.
 
-- `boolean isEmpty()` : 데이터가 존재하는지 체크한다. 
+- `boolean isEmpty()` : 데이터가 하나라도 존재하는지 체크한다. 
 
-- `addAll(Collection c)` : 기존 등록된 콜렉션 뒷부분에 추가할 콜렉션의 전체 데이터를 추가한다. 
+- `addAll(Collection c)` : 기존 콜렉션에 추가할 콜렉션의 전체 데이터를 추가한다. 
 
 - `iterator()` : iterator객체를 반환한다. 
 
