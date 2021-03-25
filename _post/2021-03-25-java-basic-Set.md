@@ -43,3 +43,16 @@
 - `iterator()` : iterator객체를 반환한다. 
 
 - `toArray()` : Set이 가지고 있는 모든 요소를 Object 형태로 고정된 배열에 저장한다.
+
+
+## Tree구조
+
+- [10, 4, 20, 9, 16, 14, 3, 12, 23]의 자료를 트리구조에 넣으면 ?
+
+- 이진 트리 구조에서 2<sup>3</sup> < 자료 9개 < 2<sup>4</sup> 이므로 Depth는 4레벨이 되어야 제일 탐색 속도가 빠르다.
+
+- InOrder방식에서는 Parent보다 작은 수는 다음 레벨의 Left, 큰 수는 Right에 넣는다.
+
+- 접근 할 때는 Left - Parent - Right로 접근하면 오름차순 정렬이 된다. (InOrder방식)
+
+- PreOrder, InOder, PostOrder방식은 트리를 구슬로 꿸때 바늘귀가 [왼쪽 / 가운데 / 오른쪽] 중 어디인지 잘 생각해보면 된다. 
