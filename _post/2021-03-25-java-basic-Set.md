@@ -10,7 +10,7 @@
 
 - treeset의 경우 각 레벨마다 하나의 데이터만 탐색하기 때문에 더 빠른 것이다. 
 
-![image](https://user-images.githubusercontent.com/77392444/112424777-5d8c4d80-8d78-11eb-901e-d377b808089c.png)
+  ![image](https://user-images.githubusercontent.com/77392444/112424777-5d8c4d80-8d78-11eb-901e-d377b808089c.png)
 
 - 하지만 전체 데이터에 뽑아내서 정렬하기에는 적합하지 않다.
 
