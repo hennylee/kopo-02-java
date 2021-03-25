@@ -13,6 +13,7 @@ import java.util.Scanner;
  * ID를 등록하였습니다. 
  * 
  */
+
 public class Exception06 {
 
 // 2. 호출자로 예외처리 날리기 =======================================================================================
@@ -38,8 +39,6 @@ public class Exception06 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		
 		
 		
