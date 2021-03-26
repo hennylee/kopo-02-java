@@ -1,63 +1,64 @@
 package kr.ac.kopo.day14.homework;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class LottoDivide {
+	
+	Random random = new Random();
+	
+	// 앞
+	List<Integer> front(int num) {
+		List<Integer> frontList = new ArrayList<Integer>();
+		
+		while(frontList.size() < 3) {
+			int start = 1;
+			int end = num - 1;
+			
+			num = random.nextInt(end) + start;
+			frontList.add(num);
+			front(num);
+		}
+		return frontList;
+	}
+	
+	// 뒤
+	List<Integer> end(int num) {
+		List<Integer> endList = new ArrayList<Integer>();
+		
+		while(endList.size() < 3) {
+			int start = num + 1;
+			int end = 46;
+			num = random.nextInt(end - start) + start;
+			endList.add(num);
+			end(num);
+		}
+		return endList;
+	}
+	
 	public static void main(String[] args) {
-		
-		int[] lottoArr = new int[5];
-		
-		int front = 1;
-		int end = 45;
-		
-		
 		LottoDivide ld = new LottoDivide();
 		
-		
-		int num = ld.lottoRandom(front, end);
-		
-		for(int i = 0; i < 3; i++) {
-			front = ld.boundStart(num);
-			lottoArr[i] = front;
-		}
-		for(int i = 0; i < 3; i++) {
-			end = ld.boundEnd(num);
-			lottoArr[2+i] = end;
-			
-		}
+		Random random = new Random();
+		int start = 1;
+		int end = 46;
 		
 		
-		System.out.println(Arrays.toString(lottoArr));
+		int num = random.nextInt(end) + start;
 		
-	}
-	
-	int lottoRandom(int front, int end) {
-		// 1 ~45에서 하나 추출
-		Random r = new Random();
-		
-		int num = r.nextInt(end) + front;
-		return num;
-	}
-	
-	int boundStart(int num) {
+		List<Integer> list = new ArrayList<Integer>();
 
-		int start01 = 1;
-		int start02 = num - 1;
-			
-		int front = lottoRandom(start01, start02);
+		List<Integer> frontList = ld.front(num);
+		List<Integer> endList = ld.end(num);
 		
-		return front;
+		list.addAll(frontList);
+		list.addAll(endList);
+		
+		System.out.println(Arrays.toString(list.toArray()));
+		
+		
 	}
-	
-	int boundEnd(int num) {
 
-		int end01 = num + 1;
-		int end02 = 45;
-		
-		int back = lottoRandom(end01, end02);
-		return back;
-	}
-	
-	
 }

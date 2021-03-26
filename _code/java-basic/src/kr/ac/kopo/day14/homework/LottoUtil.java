@@ -1,7 +1,9 @@
 package kr.ac.kopo.day14.homework;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -9,7 +11,8 @@ import java.util.Set;
 import javax.sql.rowset.JoinRowSet;
 
 public class LottoUtil {
-
+	Random r = new Random();
+	
 	/**
 	 * Set
 	 * 중복값 제거하고 랜덤으로 난수 6개 추출하기
@@ -19,7 +22,7 @@ public class LottoUtil {
 		int num;
 		int bound;
 		
-		Random r = new Random();
+		
 		bound = 45;
 		
 		while(set.size() < 6) {
@@ -27,8 +30,32 @@ public class LottoUtil {
 			set.add(num);
 		}
 		
-		System.out.println(Arrays.toString(set.toArray()));
+		//System.out.println(Arrays.toString(set.toArray()));
 	}
+	
+	/**
+	 * ArrayList
+	 * contain하면 계속 난수 추출하고
+	 * 아니면 넣기
+	 */
+	public void lottoArrayList() {
+		List<Integer> list = new ArrayList<Integer>();
+		
+		while(list.size() < 6) {
+			
+			int num = r.nextInt(45) + 1;
+			
+			if(list.contains(num)) {
+				continue;
+			}else {
+				list.add(num);
+			}
+		}
+		
+		//System.out.println(Arrays.toString(list.toArray()));
+	}
+	
+	
 	
 	/**
 	 * ArrayList
@@ -58,28 +85,7 @@ public class LottoUtil {
 	
 	
 	public void randomLotto() {
-		// 1- 45 사이의 수 6개 추출하기
-		int[] Nums = new int[45];
 		
-		for(int i = 0; i < 45; i++) {
-			Nums[i] = i+1;
-		}
-		
-		// 랜덤으로 배열 index 추출
-		Random r = new Random();
-		
-		int bound = 45;
-		int firstNum = r.nextInt(bound) + 1;
-		
-		System.out.println(firstNum);
-		
-		// 해당 배열 index의 숫자를 0으로 바꾸기
-		for(int i = 0; i < Nums.length; i++) {
-			if(Nums[i] == firstNum)
-				Nums[i] = 0;
-		}
-		
-		// 배열 방의 값이 0이 아닌 index들 중에서 하나 추출?
 		
 	}
 	

@@ -15,11 +15,11 @@ public class LottoMain {
 		sc.nextLine();
 		
 		int i = 1;
+		
 		while(i <= gameTotal) {
 			System.out.println("게임 " + i++ + " : ");
-			//util.lottoSet();
-			util.lottoDivide();
-			System.out.println("----------------------------------------------");
+			util.lottoSet();
+			//util.lottoArrayList();
 		}
 		
 
