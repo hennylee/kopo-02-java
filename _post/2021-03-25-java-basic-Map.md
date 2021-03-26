@@ -61,3 +61,39 @@ class Map {
 * 근데 해시코드까지 같게 만드는 것은 너무 귀찮다.
 
 * 그래서 Source에서 hashcode와 equals를 클릭해 자동으로 만드는 방법이 사용하면 된다.
+
+```java
+	/**
+	 * 이클립스에서 자동으로 생성해준 hashcode와 equals
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Member other = (Member) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		return true;
+	}
+```
