@@ -76,7 +76,7 @@ public class FileIOMain02 {
 		}
 		
 /*
- * read/write를 할때 Stream을 열면면 파일을 lock이 걸려서 Stream 객체만 사용가능하게 된다.
+ * read/write를 할때 Stream을 열면 파일 lock이 걸려서 Stream 객체만 사용가능하게 된다.
  * lock을 해제하면 내용을 볼 수 있게 되는 것이다.
  * lock은 메인 메소드가 끝나면 해제된다.
  * 근데 무한 루프가 돌면 main메소드 종료가 안되어서 lock해제가 안되는 것이다.

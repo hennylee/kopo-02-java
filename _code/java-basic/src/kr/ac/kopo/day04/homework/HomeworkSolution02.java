@@ -29,6 +29,10 @@ public class HomeworkSolution02 {
 		int num3 = r.nextInt(100) + 1;
 		int num4 = r.nextInt(100) + 1;
 		
+		System.out.println(num);
+		System.out.println(num2);
+		System.out.println(num3);
+		System.out.println(num4);
 		
 		
 

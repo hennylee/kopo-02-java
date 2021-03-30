@@ -1,4 +1,13 @@
 package kr.ac.kopo.day04.homework;
+
+import java.util.Arrays;
+import java.util.function.IntPredicate;
+
+/*
+ * 이 문제는 모르겠습니다....다시 한 번 생각해보고 올리겠숩니다!!
+ */
+
+
 /*
 
 5. 2 ~ 100사이의 소수를 출력
@@ -10,10 +19,11 @@ package kr.ac.kopo.day04.homework;
 	
  */
 public class HomeworkMain05 {
-
+	
 	public static void main(String[] args) {
-		// 소수? 나눠지지 않을때까지...
-
+		
+		
+		
 	}
 
 }

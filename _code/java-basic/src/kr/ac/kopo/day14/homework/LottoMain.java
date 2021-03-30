@@ -14,12 +14,31 @@ public class LottoMain {
 		int gameTotal = sc.nextInt();
 		sc.nextLine();
 		
+		System.out.println("1~4 중에서 선택하세요");
+		int choice = sc.nextInt();
+		
+		
 		int i = 1;
 		
 		while(i <= gameTotal) {
-			System.out.println("게임 " + i++ + " : ");
-			util.lottoSet();
-			//util.lottoArrayList();
+			System.out.print("게임 " + i++ + " : ");
+			
+			switch (choice) {
+			case 1: 
+				util.lottoSet();
+				break;
+			case 2:
+				util.lottoArrayList();
+				break;
+			case 3:
+				util.lottoMap();
+				break;
+			case 4:
+				util.lottoArray();
+				break;
+			}
+			
+			
 		}
 		
 

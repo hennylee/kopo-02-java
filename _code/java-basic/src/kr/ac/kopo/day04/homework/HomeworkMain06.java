@@ -1,5 +1,6 @@
 package kr.ac.kopo.day04.homework;
 
+import java.io.InterruptedIOException;
 import java.util.Scanner;
 
 /*
@@ -30,17 +31,44 @@ public class HomeworkMain06 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int num = sc.nextInt();
-		int sum = 0;
-		int sum2 = 0;
-		for(int i = 1; i < 10; i++) {
+		int sumEven = 0;
+		int sumOdd = 0;
+		int[] arrNum = new int[10];
+		
+		for(int i = 0; i < 10; i++) {
+			System.out.print(i+1+"'s 정수 : ");
+			arrNum[i] = sc.nextInt();
 			
-			if(num % 2 == 0) sum += num;
-			else sum2 += num;
-			num = sc.nextInt();
+			if(arrNum[i] % 2 == 0) {
+				sumEven += arrNum[i];
+			} else {
+				sumOdd += arrNum[i];
+			}
 		}
-		System.out.println("짝수 총합 : "+ sum);
-		System.out.println("홀수 총합 : "+ sum2);
+		
+		System.out.println("< 짝수 >");
+		
+		for(int i = 0; i < 10; i++) {
+			if(arrNum[i] % 2 == 0) {
+				System.out.print(arrNum[i] + " ");
+			}
+		}
+		System.out.println();
+		System.out.println("짝수 총합 : " + sumEven);
+
+	
+		System.out.println("< 홀수 >");
+		
+		for(int i = 0; i < 10; i++) {
+			if(arrNum[i] % 2 != 0) {
+				System.out.print(arrNum[i] + " ");
+			}
+		}
+		System.out.println();
+		System.out.println("홀수 총합 : "+sumOdd);
+		
+		
+		
 
 	}
 

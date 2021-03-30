@@ -1,7 +1,4 @@
-package kr.ac.kopo.day04.homework;
-
-import java.util.Scanner;
-
+package kr.ac.kopo.day16.test;
 /*
    
    
@@ -24,29 +21,15 @@ import java.util.Scanner;
 	나
  */
 public class HomeworkMain04 {
+	static int a = 3;
+	static void plus(int a) {
+		a = HomeworkMain04.a + 4;
+	}
 
 	public static void main(String[] args) {
-		
-		
-		int i = 2;
-
-		Scanner sc = new Scanner(System.in);
-		System.out.print("정수를 입력하세요 : ");
-		int num = sc.nextInt();
-		
-		while(i <= num && num % i != 0) {
-//			System.out.println(i);
-			i++;
-		}
-		
-		if(i == num) {
-			System.out.println("소수입니다.");
-		} else {
-			System.out.println("소수가 아닙니다.");
-		}
-		
-		
-		
+		int a = 11;
+		plus(a);
+		System.out.println(a);
 	}
 
 }

@@ -12,14 +12,14 @@ public class FileIOMain01 {
 		
 		InputStream is = System.in; // 표준 입력 장치
 		
-/* 1바이트 단위의 InputStream으로 읽어오기============================================================
-		while(true) {
-			int c = is.read();	// 바이트 단위로 읽어와서 한글같은 유니코드는 쓸 수 없다. 
-			// 바이트 스트림을 문자스트림으로 변화가 필요하다!
-			// 그게 바로 InputStreamReader
-			if(c == -1) break;
-			System.out.print((char)c);
-		}
+// 1바이트 단위의 InputStream으로 읽어오기============================================================
+//		while(true) {
+//			int c = is.read();	// 바이트 단위로 읽어와서 한글같은 유니코드는 쓸 수 없다. 
+//			// 바이트 스트림을 문자스트림으로 변화가 필요하다!
+//			// 그게 바로 InputStreamReader
+//			if(c == -1) break;
+//			System.out.print((char)c);
+//		}
 		
 		
 		/*
@@ -36,7 +36,7 @@ public class FileIOMain01 {
 			
 			int c = isr.read();
 			if(c == -1) break;
-			System.out.println((char)c);
+			System.out.print((char)c);
 			
 		}
 	}

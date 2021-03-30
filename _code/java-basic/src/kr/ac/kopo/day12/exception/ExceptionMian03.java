@@ -14,26 +14,28 @@ public class ExceptionMian03 {
 		
 		Random r = new Random();
 		
-		int i = r.nextInt(3);
+//		int i = r.nextInt(3);
+		int i = 0;
 		
-		// [묵시적 형변환으로 Exception 으로 모든 예외처리 하기] ==========================================
+		System.out.println("=============[묵시적 형변환으로 Exception 으로 모든 예외처리 하기]=============");
+		
 		try {
 			
 			System.out.println(10 / i);
-			System.out.println(s.charAt(0));
+			System.out.println(s.charAt(0)); 	// 첫번째가 오류면 수행되지 않음
 			
 			
-		} catch (Exception e) {
+		} catch (Exception e) {					// 묵시적 형변환
 			e.printStackTrace();
 		} 
 		
-		
-		
-		// [ or 연산자로 여러 개의 에러 제어하기] =======================================================
+
+		System.out.println("===================[ or 연산자로 여러 개의 에러 제어하기] ====================");
+	
 		try {
 			
 			System.out.println(10 / i);
-			System.out.println(s.charAt(0));
+			System.out.println(s.charAt(0));	// 첫번째가 오류면 수행되지 않음
 			
 			
 		} catch (ArithmeticException | NullPointerException n) {
@@ -41,7 +43,7 @@ public class ExceptionMian03 {
 		} 
 		
 		
-		// [Multi - Catch]========================================================================
+		System.out.println("============================[Multi - Catch]=========================");
 		 
 		try {
 			

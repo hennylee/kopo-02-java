@@ -17,26 +17,22 @@ public class HomeworkMain01 {
 	public static void main(String[] args) {
 		// 3개의 정수 입력 받기
 		Scanner sc = new Scanner(System.in);
-		
+		System.out.print("정수 1:");
 		int num1 = sc.nextInt();
+		System.out.print("정수 2:");
 		int num2 = sc.nextInt();
+		System.out.print("정수 3:");
 		int num3 = sc.nextInt();
 	
 		sc.close();
 		
-		// num1이 가장 클 때
-		if(num1 > num2 && num1 > num3) {
-			
-		}
-		// num2이 가장 클 때
-		else if(num2 > num1 && num2 > num3) {
-			
-		}
-		// num3이 가장 클 때
-		else if(num3 > num1 && num3 > num2) {
-			
-		}
+		// num1 vs num2 비교
+		int max = num1 > num2? num1: num2;
 		
+		// max와 num3 비교
+		max = max > num3? max: num3;
+		
+		System.out.println(max);
 		
 
 	}

@@ -17,6 +17,8 @@ package kr.ac.kopo.day03.homework;
 public class HomeworkMain06 {
 
 	public static void main(String[] args) {
+		
+		/* 기존 풀이
 		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < i; j++) {
 				System.out.print(' ');
@@ -30,6 +32,29 @@ public class HomeworkMain06 {
 			
 			System.out.println();
 		}
+		*/
+		
+		int front = 0;
+		
+		for(int i = 0; i < 5; i++) {
+			
+			for(int j = 0; j < 9; j++) {
+				
+				if(j < front) {
+					System.out.print(' ');
+				} else if(j < (9-front) ){
+					System.out.print('*');
+				}
+				
+			}
+			System.out.println();
+			
+			front++;
+			
+		}
+		
+		
+		
 	}
 
 }

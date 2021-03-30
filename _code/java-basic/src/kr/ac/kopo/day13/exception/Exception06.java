@@ -31,11 +31,12 @@ public class Exception06 {
 			
 	}
 	
+	
 	public static void main(String[] args) {
 		
 		// 호출자가 던진 예외 받아서 처리하기-----------------
 		try {
-			register();
+//			register();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

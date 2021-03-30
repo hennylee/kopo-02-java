@@ -2,11 +2,11 @@ package kr.ac.kopo.day03.homework;
 
 /*
 	7>
-		*
-	   ***
-	  *****
-	 *******
-	*********
+		*			4	1	5		1
+	   ***			3	3	6		2
+	  *****			2	5	7		3
+	 *******		1	7	8		4
+	*********		0	9	9		5
 	 *******
 	  *****
 	   ***
@@ -14,24 +14,40 @@ package kr.ac.kopo.day03.homework;
 */
 
 
-/*
-1		4	1	4
-2		3	3	3
-3		2	5	2
-4		1	7	1
-5		0	9	0
-
-
-6		1	7	1			12	8
-7		2	5	2			14	6
-8		3	3	3 			16	4
-9		4	1	4			18	2
-
- */
 public class HomeworkMain07 {
 
 	public static void main(String[] args) {
 		
+		
+		// 새로운 풀이
+		int star = 4;
+		
+		for(int i = 1; i <= 9; i++) {
+			
+			for(int j = 1; j <= 9; j++) {
+				
+				if(j <= star) {
+					System.out.print(' ');
+				}else if(j <= (9-star)){
+					System.out.print('*');
+				}
+				
+				
+			}
+			
+			System.out.println();
+			
+			if(i < 5) {
+				star--;
+			} else {
+				star++;
+			}
+			
+		}
+		
+		
+		
+		/* 기존 풀이 
 		for(int i = 1; i <= 9; i++) {
 			if(i <= 5) {
 				for(int j=0; j < 5 - i; j++) {
@@ -57,6 +73,7 @@ public class HomeworkMain07 {
 			
 			System.out.println();
 		}
+		*/
 		
 
 	}

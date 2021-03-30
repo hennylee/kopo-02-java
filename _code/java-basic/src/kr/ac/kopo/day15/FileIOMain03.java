@@ -16,6 +16,7 @@ public class FileIOMain03 {
 	public static void main(String[] args) {
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
+		
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
 		

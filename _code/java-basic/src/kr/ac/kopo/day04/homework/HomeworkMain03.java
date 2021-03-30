@@ -1,4 +1,7 @@
 package kr.ac.kopo.day04.homework;
+
+import java.util.Scanner;
+
 /*
 
    
@@ -16,19 +19,27 @@ package kr.ac.kopo.day04.homework;
 
  */
 public class HomeworkMain03 {
+	static final int DEPTH = 100;
+	static int speed = 5;
 
 	public static void main(String[] args) {
-		int height = 0;
-		int hour = 5;
 		
-		if( height < 50) {
-			height += (hour * 4);
-		} else {
-			height += (hour * 3);
+		int hour = 1;
+		int height = 0;
+
+		if(height < 50) {
+			speed -= 1;
+		} else if(height < 100) {
+			speed -= 2;
+		} 
+		
+		while(height < DEPTH) {
+
+			height = speed * hour;			
+			System.out.println("[" + hour + "시간후] 달팽이가 올라간 초 높이 : " + height + "M");
+			hour++;
 		}
 		
-		System.out.println(height);
-
 	}
 
 }

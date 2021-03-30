@@ -150,7 +150,7 @@ class Car {
 	}
 }
 
-public class MapMain02 {
+public class MapMain03 {
 
 	public static void main(String[] args) {
 		
