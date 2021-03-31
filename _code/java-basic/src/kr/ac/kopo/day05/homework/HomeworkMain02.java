@@ -54,19 +54,28 @@ public class HomeworkMain02 {
 		
 		int[] arr = new int[evenNum + oddNum];
 		
+		
+		int evenCnt = 0;
+		int oddCnt = oddNum;
+		
 		for(int i = 0; i < arr.length; i++) {
-			System.out.print("num" + (i+1) + " : ");
 			
+			System.out.println("num"+(i+1)+" : ");
 			int num = sc.nextInt();
 			
-			if(num % 2 == 0 && i < evenNum) {
-				arr[i] = num;
-			} else if(num % 2 != 0 && i >= evenNum) {
-				arr[i] = num;
+			
+			if(num % 2 == 0 && evenCnt < evenNum) {
+				arr[evenCnt] = num;
+				evenCnt++;
+			}
+			else if(num % 2 != 0 && 0 <= oddCnt) {
+				arr[evenNum+ oddCnt-1] = num;
+				oddCnt--;
 			} else {
 				i--;
 			}
 		}
+		
 		
 		System.out.println(Arrays.toString(arr));
 		

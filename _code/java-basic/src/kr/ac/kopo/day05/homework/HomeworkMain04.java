@@ -1,5 +1,7 @@
 package kr.ac.kopo.day05.homework;
 
+import java.util.Arrays;
+
 
 /*
 	
@@ -35,7 +37,34 @@ public class HomeworkMain04 {
 
 	public static void main(String[] args) {
 	
+		int[] arr = new int[99];
 		
+		for(int i = 2; i <= arr.length+1; i++) {
+			arr[i-2] = i;
+		}
+		
+		System.out.println(Arrays.toString(arr));
+		
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] != 0) {
+				
+				for(int j = i+1; j < arr.length; j++) {
+					
+					if(arr[j] % arr[i] == 0) {
+						arr[j] = 0;
+					}
+				}
+				
+			}
+		}
+	
+		System.out.println(Arrays.toString(arr));
+		
+		for(int i : arr) {
+			if(i != 0) {
+				System.out.print(i + "\t");
+			}
+		}
+	
 	}
-
 }
