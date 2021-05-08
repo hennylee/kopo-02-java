@@ -19,6 +19,9 @@ public class StringMain02 {
 		
 		str.getChars(0, str.length(), chars, 0);
 		
+		//char[] chars3 = str.getChars(0, str.length(), chars, 0);
+		
+		
 		for(int i = 0; i < str.length(); i++) {
 			chars2[i] = str.charAt(i);
 		}

@@ -1,6 +1,6 @@
 package kr.ac.kopo.day07;
 
-public class MethodMain04 {
+public class MethodMain {
 
 	public static void main(String[] args) {
 		Method m = new Method();

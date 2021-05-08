@@ -20,9 +20,11 @@ public class Gugudan {
 	 */
 	void print(int dan) {
 		System.out.println("***** " + dan + "단 *****");
+		
 		for(int i = 1; i < 10; i++) {
 			System.out.println(dan + " * " + i + " = " + (dan * i));
 		}
+		
 		System.out.println();
 	}
 	

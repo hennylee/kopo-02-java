@@ -5,8 +5,8 @@ public class StringMain01 {
 	public static void main(String[] args) {
 	
 		// 아래 객체들은 메모리 구조가 들리다. 
-		String str = new String();
-		String str1 = "";
+		String str = new String();	// stack 메모리 공간에 저장
+		String str1 = "";			// 상수 변수 메모리 공간에 저장
 		String str2 = null;
 		
 		System.out.println("str : " + str);
