@@ -1,11 +1,13 @@
 package menu;
 
 import manager.AdminManager;
+import manager.BookManager;
 import util.InputUtil;
 
 public class AdminMenu {
 	
 	AdminManager am = new AdminManager();
+	BookManager bm = new BookManager();
 	
 	/**
 	 * 관리자 첫 접속 메뉴 :  1.로그인  2. 회원가입 
@@ -194,7 +196,7 @@ public class AdminMenu {
 	public void AdminBookMenu() {
 		int choice;
 		while(am.loginStatus) {
-			choice = InputUtil.InputInt("[ 원하는 메뉴를 선택하세요 ] ( 1. 도서 등록  2. 도서 삭제 	3. 연체 조회 	4. 대출조회 ) ");
+			choice = InputUtil.InputInt("[ 원하는 메뉴를 선택하세요 ] ( 1. 도서 등록  2. 도서 삭제 	3. 연체 조회 	4. 대출조회 	5. 도서 검색  6. 로그아웃) ");
 			
 			switch(choice) {
 			case 1:
@@ -208,6 +210,14 @@ public class AdminMenu {
 				break;
 			case 4:
 				am.getReserveList();
+				break;
+			case 5:
+				// 도서 검색
+				bm.searchBook();	
+				break;
+			case 6:
+				// 로그아웃
+				am.AdminLogOut();	
 				break;
 			default:
 				return;

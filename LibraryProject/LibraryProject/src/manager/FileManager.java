@@ -14,11 +14,11 @@ import vo.ReservationVO;
 import vo.UserVO;
 
 public class FileManager {
-	public static final File bFile = new File("C:\\DBMS-Study\\LibraryProject\\src\\file\\bookList.txt");
-	public static final File mFile = new File("C:\\DBMS-Study\\LibraryProject\\src\\file\\memberList.txt");
-	public static final File aFile = new File("C:\\DBMS-Study\\LibraryProject\\src\\file\\adminList.txt");
-	public static final File rFile = new File("C:\\DBMS-Study\\LibraryProject\\src\\file\\reserveList.txt");
-	public static final File pFile = new File("C:\\DBMS-Study\\LibraryProject\\src\\file\\pendingList.txt");
+	public static final File bFile = new File("C:\\kopo-02-java\\LibraryProject\\LibraryProject\\src\\file\\bookList.txt");
+	public static final File mFile = new File("C:\\kopo-02-java\\LibraryProject\\LibraryProject\\src\\file\\memberList.txt");
+	public static final File aFile = new File("C:\\kopo-02-java\\LibraryProject\\LibraryProject\\src\\file\\adminList.txt");
+	public static final File rFile = new File("C:\\kopo-02-java\\LibraryProject\\LibraryProject\\src\\file\\reserveList.txt");
+	public static final File pFile = new File("C:\\kopo-02-java\\LibraryProject\\LibraryProject\\src\\file\\pendingList.txt");
 
 	protected static List<PendingVO> pendingList;
 	protected static List<BookVO> bookList;

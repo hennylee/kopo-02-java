@@ -21,7 +21,7 @@ public interface MemberBookManagement {
 	/**
 	 * 도서 반납
 	 */
-	public void ReturnBook();
+	public void MemberReturnBook();
 	
 	
 	

@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.util.stream.Stream;
 
 /**
- * 	[iodata]/[dog.jpg]를 ===> [iodata]/[dog2.jpg]로 복사한다
+ * 	[iodata/dog.jpg]를 ===> [iodata/dog2.jpg]로 복사한다
  * 
  * 	dog.jpg를 읽어야 하니까 입력장치이다.
  * 	dog2.jpg는 저장을 해야 하니까 출력 장치이다.

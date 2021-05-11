@@ -103,7 +103,7 @@ public class MemberMenu {
 	public void MemberBookMenu() {
 		int choice;
 		while(mm.loginStatus) {
-			choice = InputUtil.InputInt("[ 원하는 메뉴를 선택하세요 ] ( 1. 도서 대출  2. 나의 대출 관리 3. 도서 반납 4. 로그아웃 ) ");
+			choice = InputUtil.InputInt("[ 원하는 메뉴를 선택하세요 ] ( 1. 도서 대출  2. 나의 대출 목록 3. 도서 반납  4. 책검색  5. 로그아웃  ) ");
 			
 			switch(choice) {
 			case 1:
@@ -113,9 +113,12 @@ public class MemberMenu {
 				mm.MyReserveList();
 				break;
 			case 3:
-				mm.ReturnBook();
+				mm.MemberReturnBook();
 				break;
 			case 4:
+				mm.SearchBook();
+				break;
+			case 5:
 				mm.MemberLogOut();
 				break;
 			default:

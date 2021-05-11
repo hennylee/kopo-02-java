@@ -1,5 +1,6 @@
 package manager;
 
+import java.security.Identity;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,6 +13,9 @@ import vo.ReservationVO;
 import vo.UserVO;
 
 public class BookManager extends FileManager {
+	
+
+	
 
 	/**
 	 * 개인이 대출 중인 도서 목록
@@ -44,6 +48,56 @@ public class BookManager extends FileManager {
 		}
 	}
 	
+	/**
+	 * 검색한 책이 존재하는 지 확인하는 메소드
+	 * @param Bookinfo
+	 * @return
+	 */
+	public boolean CheckExistBook(String msg) {
+		boolean bCheck = true;
+		boolean existCheck=false;
+		
+		String input = InputUtil.StrNullCheckInput(msg);
+		
+		for (BookVO book : bookList) {
+			
+			// 책 이름 검색
+			if ((book.getBookName().equals(input))) {
+				searchedBookList.add(book);
+				System.out.println(book.toString());
+				bCheck = false;
+				existCheck=true;
+				break;
+			}
+			// 출판사 검색
+			if ((book.getBookPublisher().equals(input))) {
+				searchedBookList.add(book);
+				System.out.println(book.toString());
+				bCheck = false;
+				existCheck=true;
+				break;
+			}
+			// 저자 검색
+			if ((book.getBookAuthor().equals(input))) {
+				searchedBookList.add(book);
+				System.out.println(book.toString());
+				bCheck = false;
+				existCheck=true;
+				break;
+			}
+		}
+		if(!existCheck) {
+			System.out.println(input+"의 책이 존재하지 않습니다.");
+		}
+		
+		return bCheck;
+	}	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * 도서 검색
@@ -52,7 +106,7 @@ public class BookManager extends FileManager {
 	public List<BookVO> searchBook() {
 		searchedBookList = new ArrayList<>();
 		boolean bCheck = true;
-		boolean existCheck=false;
+//		boolean existCheck=false;
 		search: while (true) {
 			int condition = InputUtil.InputInt("검색 조건을 선택하세요 " + "( 1. 책이름 / 2. 출판사 / 3. 저자  / 4. 취소) ");
 			if (bookList.size() == 0) {
@@ -63,59 +117,22 @@ public class BookManager extends FileManager {
 				case 1:
 					
 					while (bCheck) {
-						String input = InputUtil.StrNullCheckInput("책이름을 입력하세요 : ");
-		
-						for (BookVO book : bookList) {
-							if ((book.getBookName().equals(input))) {
-								searchedBookList.add(book);
-								System.out.println(book.toString());
-								bCheck = false;
-								existCheck=true;
-								break;
-							}
-						}
-						if(!existCheck) {
-							System.out.println(input+"의 책이 존재하지 않습니다.");
-						}
+						
+						bCheck = CheckExistBook("책이름을 입력하세요 : ");
+						
 					}
 
 					break;
-					///( 1. 책이름 / 2. 출판사 / 3. 저자  / 4. 취소)
+					
 				case 2:
 					while (bCheck) {
-						String input = InputUtil.StrNullCheckInput("출판사를 입력하세요 : ");
-		
-						for (BookVO book : bookList) {
-							if ((book.getBookPublisher().equals(input))) {
-								searchedBookList.add(book);
-								System.out.println(book.toString());
-								bCheck = false;
-								existCheck=true;
-								break;
-							}
-						}
-						if(!existCheck) {
-							System.out.println(input+"의 출판사가 존재하지 않습니다.");
-						}
+						bCheck = CheckExistBook("출판사를 입력하세요 : ");
 					}
 
 					break;
 				case 3:
 					while (bCheck) {
-						String input = InputUtil.StrNullCheckInput("저자를 입력하세요 : ");
-		
-						for (BookVO book : bookList) {
-							if ((book.getBookAuthor().equals(input))) {
-								searchedBookList.add(book);
-								System.out.println(book.toString());
-								bCheck = false;
-								existCheck=true;
-								break;
-							}
-						}
-						if(!existCheck) {
-							System.out.println(input+"의 저자가 존재하지 않습니다.");
-						}
+						bCheck = CheckExistBook("저자를 입력하세요 : ");
 					}
 
 					break;
@@ -239,7 +256,6 @@ public class BookManager extends FileManager {
 			for (PendingVO vo : pendingList) {
 				if (usrCode == vo.getUsercode()) {
 					nxtDate = vo.getNextDate();
-					System.out.println("NXT" + nxtDate);
 				}
 			}
 			term = DateUtil.diffDatesFromToday(nxtDate);
@@ -257,13 +273,16 @@ public class BookManager extends FileManager {
 	public String nextRsvDate(int usrCode, int bookCode, String returnDate) {
 
 		int term = 0;
+		
+		
+		RFileToList();
 
 		for (ReservationVO vo : reserveList) {
 			if (vo.getBookBarcode() == bookCode && vo.getMemberCode() == usrCode) {
 				term = DateUtil.diffDates(returnDate, vo.getReserveDate());
 			}
 		}
-
+		
 		return DateUtil.plusDate(returnDate, term);
 
 	}
@@ -294,7 +313,7 @@ public class BookManager extends FileManager {
 				}
 				
 				// 대여한 책이 3권 이하니?
-				if(RsvCntBook(logedUserCode) > 3) {
+				if(RsvCntBook(logedUserCode) >= 3) {
 					System.out.println("[ 3권 이상 대출이 불가합니다. ]");
 					bCheck = false;
 				}
@@ -356,19 +375,25 @@ public class BookManager extends FileManager {
 		List<ReservationVO> myReserveList = new ArrayList<>();
 
 		// reserveList 업데이트 (연체 여부 확인 위해서)
-		System.out.println(reserveList.size());
 		UpdateReserveList();
-		System.out.println(reserveList.size());
 		BFileToList();
 		
+		System.out.println("[ 현재 "+ logedMemberId +"님이 대출 중인 도서 목록 입니다 ]");
 
 		System.out.println("memberCode" + "\t" + "reserveDate" + "\t" + "overdueStatus" + "\t" + "bookBarcode" + "\t");
+		System.out.println("------------------------------------------------------------------------------------------");
 		for (ReservationVO vo : reserveList) {
 			if (vo.getMemberCode() == logedUserCode) {
 				myReserveList.add(vo);
 				System.out.println(vo.toString());
 			}
 		}
+		
+		if(myReserveList.size() == 0) {
+			System.out.println("대여 중인 책이 없습니다.");
+		}
+		
+		
 		return myReserveList;
 	}
 
@@ -393,60 +418,63 @@ public class BookManager extends FileManager {
 	 */
 	public void ReturnBook() {
 		List<BookVO> newBookList = new ArrayList<BookVO>(); // 도서 정보를 대출 가능으로 변경할 리스트
-
-		System.out.println("==============================================");
-
-		System.out.println("[ 현재 대출 중인 도서 목록 입니다 ]");
-
+		List<ReservationVO> resevedList = new ArrayList<ReservationVO>();
 		// 나의 대출 리스트 출력
-		MyReserveList();
+		resevedList = printMemberRsvList();
 
-		// 반납할 책 입력받기
-		int bookBarcode = InputUtil.InputInt("반납할 책의 바코드를 입력하세요 : ");
+		top:
+		while(resevedList.size() != 0) {
+			
+			// 반납할 책 입력받기
+			int bookBarcode = InputUtil.InputInt("반납할 책의 바코드를 입력하세요 : ");
+			
+			// reserveList에서 삭제
+			
+			for (ReservationVO vo : reserveList) {
+				if (vo.getBookBarcode() == bookBarcode) {
+					reserveList.remove(vo);
+					System.out.println("[ 반납되었습니다. ]");
+					
+					// 반납 연체 처리
+					// 연체 여부 확인해서 => 연체하면 => 연체 리스트에 넣기
+					String returnDate = DateUtil.getToday();
+					
+					PendingVO pvo = new PendingVO();
+					
+					if (DateUtil.diffDatesFromToday(vo.getReserveDate()) > 7) {
+						
+						pvo.setUsercode(logedUserCode);
+						pvo.setReturnDate(DateUtil.getToday());
+						pvo.setNextDate(nextRsvDate(logedUserCode, bookBarcode, pvo.getReturnDate()));
+						//(int usrCode, int bookCode, String returnDate)
+						
+						pendingList.add(pvo);
+						PListToFile();
+					}
+					
 
-		// reserveList에서 삭제
-		Iterator iter = reserveList.iterator();
-		ReservationVO rvo = new ReservationVO();
-
-		for (ReservationVO vo : reserveList) {
-			if (vo.getBookBarcode() == bookBarcode) {
-				reserveList.remove(vo);
-				System.out.println("[ 반납되었습니다. ]");
-
-				// 반납 연체 처리
-				// 연체 여부 확인해서 => 연체하면 => 연체 리스트에 넣기
-				String returnDate = DateUtil.getToday();
-
-				PendingVO pvo = new PendingVO();
-
-				if (DateUtil.diffDatesFromToday(vo.getReserveDate()) > 7) {
-
-					pvo.setUsercode(logedUserCode);
-					pvo.setReturnDate(DateUtil.getToday());
-
-					pendingList.add(pvo);
+					// reserve 파일 업데이트 => 대출 목록에서 삭제
+					RListToFile();
+					
+					// 반납한 책 bookList에서 찾기 => isReservationStatus 변경하기
+					for (BookVO vo2 : bookList) {
+						if (vo2.getBookBarcode() == bookBarcode) {
+							vo2.setReserved(false);
+						}
+						newBookList.add(vo2);
+					}
+					
+					// book 파일 업데이트
+					bookList = newBookList;
+					BListToFile();
+					
+					break top;
 				}
-
-				PListToFile();
-
-				break;
 			}
+			
+			System.out.println("해당 도서코드가 없습니다.");
+			
 		}
-
-		// reserveList 업데이트 => 대출 목록에서 삭제
-		RListToFile();
-
-		// 반납한 책 bookList에서 찾기 => isReservationStatus 변경하기
-		for (BookVO vo : bookList) {
-			if (vo.getBookBarcode() == bookBarcode) {
-				vo.setReserved(false);
-			}
-			newBookList.add(vo);
-		}
-
-		// newBookList 파일에 넣기
-		bookList = newBookList;
-		BListToFile();
 
 	}
 	
