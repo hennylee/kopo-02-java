@@ -17,7 +17,7 @@ public interface AdminBookManagement {
 	 * @param book
 	 * @return
 	 */
-	public List<BookVO> deleteBook();
+	public void deleteBook();
 	
 	/**
 	 * 연체 조회

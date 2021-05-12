@@ -168,33 +168,77 @@ public class AdminManager extends UserManager
 	// -----------------------------------------------------------------------------------------------------
 	// 도서 삭제
 	@Override
-	public List<BookVO> deleteBook() {
-		List<BookVO> removedList = new ArrayList<BookVO>(); // 삭제 후 책 리스트
-
-		// 책리스트 출력
+	public void deleteBook() {
+		boolean bCheck = true;
+		int input = 0;
+		
+		// 책 목록 출력하기
 		bm.printBookList();
-
-		int code = InputUtil.InputInt("삭제할 도서의 바코드를 입력하세요 : ");
-
-		// 삭제 가능한지 체크
-		if (rsvCheck(code)) {
-			for (BookVO book : bookList) {
-				if (book.getBookBarcode() != code) {
-					removedList.add(book);
+		
+		while(true) {
+			
+			// 삭제할 책의 바코드 입력
+			input = InputUtil.InputInt("삭제할 책의 바코드를 입력하세요 : ");
+		
+			// 입력한 바코드가 존재하니? => YES!
+			if(!bm.CheckExistBook(input)) {
+				System.out.println("[ 해당 바코드가 존재하지 않습니다. ]");
+			}
+			else {
+		
+				// 그 책 대출 가능하니?
+				if(bm.CheckRsvBook(input)) {
+					System.out.println("[ 이미 대여 중인 책입니다. ]");
+					bCheck = false;
+				}
+				
+				if(bCheck) {
+					// 삭제 실행
+					for(BookVO bvo : bookList) {
+						if(bvo.getBookBarcode() == input) {
+							bookList.remove(bvo);
+							BListToFile();
+							System.out.println("[ 삭제가 완료되었습니다. ]");
+							break;
+						}
+					}
+					break;
+					
 				}
 			}
-			System.out.println("[ 도서 삭제 되었습니다. ]");
-		} else {
-			System.out.println("[ 대출 중이기 때문에 삭제 불가능합니다. ]");
 		}
-
-		bookList = removedList;
-		// 바뀐 정보를 파일에
-		BListToFile();
-
-		return bookList;
+		
 	}
-
+		
+		
+		
+		
+		
+		
+		
+//		while(bookList != null) {
+//			
+//			
+//			// 바코드가 존재하면?
+//			for (BookVO vo : bookList) {
+//					
+//				// 예약중이라면?
+//				if (vo.getBookBarcode() == code && vo.isReserved()) {
+//					System.out.println(vo.isReserved());
+//					break;
+//				}
+//				else {
+//					removedList.remove(vo.getBookBarcode());
+//					bookList = removedList;
+//					// 바뀐 정보를 파일에
+//					BListToFile();
+//					break top;
+//				}
+//			}
+//				
+//		}
+		
+		
 	// 바코드가 삭제가능한지 검증
 	/**
 	 * 삭제 가능하면 true, 삭제 불가능하면 false
@@ -242,7 +286,7 @@ public class AdminManager extends UserManager
 		List<ReservationVO> reservedList = new ArrayList<>();
 
 		// 전체 대출 목록 출력
-		bm.printBookList();
+		bm.printReserveList();
 
 		return reservedList;
 	}

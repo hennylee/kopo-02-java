@@ -162,6 +162,8 @@ public class BookManager extends FileManager {
 			System.out.println(vo.toString());
 		}
 		System.out.println("----------------------------------------------------------------");
+		
+		BFileToList();
 	}
 	
 	/**
@@ -343,6 +345,7 @@ public class BookManager extends FileManager {
 					
 					// 대출리스트 파일에 등록
 					AddToFile(rFile, rvo.toString());
+					RFileToList();
 					
 					// 대출 이후 책 대출 상태 업데이트
 					List<BookVO> lastBookList = bookList;
@@ -368,7 +371,7 @@ public class BookManager extends FileManager {
 	
 	
 	/**
-	 * 개인 도서 대출 및 검색
+	 * 개인 도서 대출 목록
 	 * @return
 	 */
 	public List<ReservationVO> printMemberRsvList() {
@@ -376,7 +379,11 @@ public class BookManager extends FileManager {
 
 		// reserveList 업데이트 (연체 여부 확인 위해서)
 		UpdateReserveList();
+		
 		BFileToList();
+		
+		// 대여 하자마자 목록 조회할 때, 대여 내역을 불러오기 위해서 파일 내역을 리스트로 불러온다. 
+		//RFileToList();
 		
 		System.out.println("[ 현재 "+ logedMemberId +"님이 대출 중인 도서 목록 입니다 ]");
 
@@ -403,6 +410,7 @@ public class BookManager extends FileManager {
 	public List<ReservationVO> UpdateReserveList() {
 		List<ReservationVO> overdueList = new ArrayList<ReservationVO>();
 
+		RFileToList();
 		for (ReservationVO vo : reserveList) {
 			if (DateUtil.diffDatesFromToday(vo.getReserveDate()) >= 7) {
 				vo.setIsOverdue(true);
@@ -410,6 +418,7 @@ public class BookManager extends FileManager {
 			overdueList.add(vo);
 		}
 		reserveList = overdueList;
+		RListToFile();
 		return overdueList;
 	}
 	
@@ -429,11 +438,9 @@ public class BookManager extends FileManager {
 			int bookBarcode = InputUtil.InputInt("반납할 책의 바코드를 입력하세요 : ");
 			
 			// reserveList에서 삭제
-			
 			for (ReservationVO vo : reserveList) {
 				if (vo.getBookBarcode() == bookBarcode) {
 					reserveList.remove(vo);
-					System.out.println("[ 반납되었습니다. ]");
 					
 					// 반납 연체 처리
 					// 연체 여부 확인해서 => 연체하면 => 연체 리스트에 넣기
@@ -452,10 +459,6 @@ public class BookManager extends FileManager {
 						PListToFile();
 					}
 					
-
-					// reserve 파일 업데이트 => 대출 목록에서 삭제
-					RListToFile();
-					
 					// 반납한 책 bookList에서 찾기 => isReservationStatus 변경하기
 					for (BookVO vo2 : bookList) {
 						if (vo2.getBookBarcode() == bookBarcode) {
@@ -467,6 +470,10 @@ public class BookManager extends FileManager {
 					// book 파일 업데이트
 					bookList = newBookList;
 					BListToFile();
+					
+					// reserve 파일 업데이트 => 대출 목록에서 삭제
+					RListToFile();
+					System.out.println("[ 반납되었습니다. ]");
 					
 					break top;
 				}
