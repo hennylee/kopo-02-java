@@ -1,4 +1,4 @@
-package kr.ac.kopo.day16.test;
+package kr.ac.kopo.test01;
 
 import java.util.Arrays;
 

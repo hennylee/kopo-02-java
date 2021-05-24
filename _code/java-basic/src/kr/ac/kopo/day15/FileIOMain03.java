@@ -5,7 +5,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import kr.ac.kopo.utill.FileClose;
+import kr.ac.kopo.util.FileClose;
 
 /**
  * dog.jpg 파일을 dog3.jpg로 복사

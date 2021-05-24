@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import kr.ac.kopo.util.FileClose;
+import kr.ac.kopo.utill.FileClose;
 
 public class FileIOMain04 {
 

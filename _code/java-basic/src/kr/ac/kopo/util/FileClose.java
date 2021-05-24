@@ -1,7 +1,9 @@
-package kr.ac.kopo.utill;
+package kr.ac.kopo.util;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 
 public class FileClose {
 	
@@ -30,6 +32,29 @@ public class FileClose {
 		}
 	}
 	
+	// Reader 오버로딩
+	public static void close(Reader r) {
+		if(r != null) {
+			try {
+				r.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// Writer 오버로딩
+	public static void close(Writer w) {
+		if(w != null) {
+			try {
+				w.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 	public static void close(InputStream bis, InputStream is) {
 		FileClose.close(bis);
 		FileClose.close(is);
@@ -40,4 +65,8 @@ public class FileClose {
 		FileClose.close(os);
 	}
 	
+	public static void close(Reader r, Writer w) {
+		close(r);
+		close(w);
+	}
 }
