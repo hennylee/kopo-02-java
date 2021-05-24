@@ -5,14 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.kopo.util.FileClose;
 
 /**
- * ArrayList 단위로 입출력 하고 싶을 때!
+ * FileOutputStream, ObjectOutputStream를 사용해서 Object 여러개를 ArrayList 단위로 입출력하기
  * @author HP
  *
  */
