@@ -37,10 +37,25 @@
 
 - 데이터베이스 드라이버 로드 : `Class.forName("oracle.jdbc.driver.OracleDriver");`
 
-- 데이터베이스 연결 : Connection conn = DriverManager.getConnection();
+- 데이터베이스 연결 : Connection conn = DriverManager.getConnection(JDBC_url, "id", "password");
+	- JDBC_url 구성 : jdbc:oracle:thin:@IP주소:포트:SID
+	- IP주소 : 오라클이설치된컴퓨터의IP 주소혹은도메인이름
+	- 포트 : 리스너의사용포트기본값은1521
+	- SID, 서비스이름 : 오라클인스턴스이름으로MySQL에서는DB 이름으로도불림
 
 - SQL 실행 객체 얻기 및 실행
+	- Statement > PreparedStatement > CallableStatement
+	- PreparedStatement : 객체생성시 SQL 문장을 미리 생성하고 변수부는 별도의 메서드로 대입하는 방식으로 성능과 관리면에서 모두 권장되는 방식이다.
 
+- 결과 받기
+
+	- `ResultSet rs = pstmt.executeQuery( );` 
+	- ResultSet은 커서 개념의 연결포인터이다.
+	- 기본적으로 `next( )` 메서드를 통해 Raw를 이동한다.
+
+- 연결 해제
+	- `conn.close();`	 
+	- Connection 을 close()해주지 않으면 사용하지 않는 연결이 유지되어 DB 자원을 낭비하게 되기 때문에 꼭 연결을 해제해 주어야 한다.
 
 ## oracle 18c Express 설치 
 
