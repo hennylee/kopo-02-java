@@ -134,6 +134,11 @@
 ## Data
 ![image](https://user-images.githubusercontent.com/77392444/115522966-8ba57480-a2c7-11eb-927a-76cc1d08d4ca.png)
 
+## DataInput, DataOutput 인터페이스
+
+![image](https://user-images.githubusercontent.com/77392444/115522870-7597b400-a2c7-11eb-93c0-d7f6f9899cf0.png)
+
+![image](https://user-images.githubusercontent.com/77392444/115522905-7c262b80-a2c7-11eb-8ff4-eef6f5290315.png)
 
 
 ## DataInputStream
@@ -142,7 +147,6 @@
 
 
 - 저장되어 있는 순서를 모르면 메소드를 결정할 수 없다는 단점이 있다. 
-
 
 
 ## DataOutputStream
@@ -157,21 +161,17 @@
 - 메모장 등으로 보면 기본 자료형에 맞게 데이터가 보이진 않지만, 기본 자료형 byte에 맞게 잘 저장이 되어 있는 것이다. 
 
 
-## DataInput
+## ObjectInput, ObjectOutput 인터페이스
 
-![image](https://user-images.githubusercontent.com/77392444/115522870-7597b400-a2c7-11eb-93c0-d7f6f9899cf0.png)
+- 객체의 입출력을 지원하고, 객체를 파일에 저장 또는 저장된 객체를 읽어올때 사용한다. 
 
+- 직렬화(Serialization)을 통해 객체가 가진 데이터들을 순차적인 데이터로 변환시킨다. 
 
-
-## DataOutput
-
-![image](https://user-images.githubusercontent.com/77392444/115522905-7c262b80-a2c7-11eb-8ff4-eef6f5290315.png)
-
+- 역직렬화(Deserialization)를 통해 직렬화된 데이터를 읽어서 자신의 상태를 복구한다. 
 
 ## ObjectInputStream
 
 ![image](https://user-images.githubusercontent.com/77392444/119295566-0b8d7880-bc92-11eb-9686-e386171173a5.png)
-
 
 - `readObject()` : 객체 단위로 읽어오는 메소드
 
