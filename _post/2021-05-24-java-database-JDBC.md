@@ -45,12 +45,13 @@
 
 - SQL 실행 객체 얻기 및 실행
 	- Statement > PreparedStatement > CallableStatement
-	- PreparedStatement : 객체생성시 SQL 문장을 미리 생성하고 변수부는 별도의 메서드로 대입하는 방식으로 성능과 관리면에서 모두 권장되는 방식이다.
+	- PreparedStatement : 객체생성시 `?`를 사용해서 SQL 문장을 미리 생성하고 변수부는 별도의 메서드로 대입하는 방식으로 성능과 관리면에서 모두 권장되는 방식이다.
 
 - 결과 받기
-
+	- SELECT 문의 결과를 받아올 때, `executeQuery( )`를 사용한다.
 	- `ResultSet rs = pstmt.executeQuery( );` 
-	- ResultSet은 커서 개념의 연결포인터이다.
+	- ResultSet은 커서 개념의 연결포인터이다. (Collection에서의 Iterator와 유사하다고 이해하면 된다.)
+	- ResultSet은 각각의 record에 접근하는 것이 목적이다. 
 	- 기본적으로 `next( )` 메서드를 통해 Raw를 이동한다.
 
 - 연결 해제
@@ -99,8 +100,8 @@ public class DBTestMain {
 			
 			// 2단계 : DB 접속 및 연결객체 얻기
 			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.119.119:1521:dink",
-															"scott",
-															"tiger");
+							"scott",
+							"tiger");
 			System.out.println("DB접속 성공 : " + conn);
 			
 		} catch (Exception e) {
@@ -151,12 +152,12 @@ public class InesertMain01 {
 			System.out.println("conn : " + conn);
 			
 			// 3단계 : SQL 실행 객체 얻기
-			stmt = conn.createStatement(); 							         // createStatement() : statement라는 객체를 return한다.
+			stmt = conn.createStatement(); 	// createStatement() : statement라는 객체를 return한다.
 			String sql = "INSERT INTO T_TEST(ID, NAME) "
-					+ "VALUES('hong', '홍길동')"; 					          // 끝에 세미콜론(;) 붙이지 않는다.
+					+ "VALUES('hong', '홍길동')";  // 끝에 세미콜론(;) 붙이지 않는다.
 			
 			// 4단계 : SQL문을 실행하고 결과 얻기
-			int cnt = stmt.executeUpdate(sql); 						      // executeUpdate()의 return값이 int인 이유는? update한 행의 갯수를 반환하기 때문이다.
+			int cnt = stmt.executeUpdate(sql);  // executeUpdate()의 return값이 int인 이유는? update한 행의 갯수를 반환하기 때문이다.
 			System.out.println("총 " + cnt + "개 행 삽입");
 			
 		} catch (Exception e) {
@@ -246,12 +247,12 @@ public class InesertMain02 {
 			String name = sc.nextLine();
 			
 			// 3단계 : SQL 실행 객체 얻기
-			stmt = conn.createStatement(); 							      // createStatement() : statement라는 객체를 return한다.
+			stmt = conn.createStatement(); 	 // createStatement() : statement라는 객체를 return한다.
 			String sql = "INSERT INTO T_TEST(ID, NAME) "
-					+ "VALUES(\'"+ id +"\', \'"+ name +"\')"; 		// 문자열은 작은 따옴표(\')로 묶어줘야 한다.
+					+ "VALUES(\'"+ id +"\', \'"+ name +"\')";  // 문자열은 작은 따옴표(\')로 묶어줘야 한다.
 			
 			// 4단계 : SQL문을 실행하고 결과 얻기
-			int cnt = stmt.executeUpdate(sql); 						    // executeUpdate()의 return값이 int인 이유는? update한 행의 갯수를 반환하기 때문이다.
+			int cnt = stmt.executeUpdate(sql);   // executeUpdate()의 return값이 int인 이유는? update한 행의 갯수를 반환하기 때문이다.
 			System.out.println("총 " + cnt + "개 행 삽입");
 			
 		} catch (Exception e) {
@@ -482,6 +483,229 @@ public class UpdateMain01 {
 - SQLDeveloper
 
 ![image](https://user-images.githubusercontent.com/77392444/119318669-8cf60280-bcb4-11eb-8ee8-d4ab717c4eef.png)
+
+
+## SELECT문과 ResultSet로 결과 조회하기
+
+```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class SelectMain01 {
+	public static void main(String[] args) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 1단계
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			// 2단계
+			String url = "jdbc:oracle:thin:@192.168.119.119:1521:dink";
+			String user = "scott";
+			String pw = "tiger";
+			
+			conn = DriverManager.getConnection(url,user,pw);
+			
+			// 3단계
+			String sql = "select * from t_test";
+			pstmt = conn.prepareStatement(sql);
+			
+			// 4단계
+			ResultSet rs = pstmt.executeQuery();
+			
+			
+			/*
+			 * rs.next 메소드에 return 타입이 Boolean 형으로 나온다. 
+			 * 그 다음 레코드가 있으면 true, 없으면 false값을 return한다.
+			 */
+			
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				System.out.println(id + "," + name);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+			// 5단계 
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+}
+```
+
+- 콘솔 결과
+
+![image](https://user-images.githubusercontent.com/77392444/119422669-890dc300-bd3c-11eb-9f7c-b6e7f7d9d18d.png)
+
+- SQLDeveloper
+
+![image](https://user-images.githubusercontent.com/77392444/119422707-975bdf00-bd3c-11eb-9bee-ad35e0c2d503.png)
+
+
+## util 클래스로 중복 코드 재사용하기
+
+- 반복되는 내용을 util 클래스로 만들어 두고 재사용하고, 유연한 수정에 용이하게 만들기 위함이다.
+
+- util클래스는 JAR 파일로 배포할 수 있다. 하지만, 배포된 JAR파일은 수정이 불가능하기 때문에 수정할 필요가 없는 내용만 배포하는 것이 좋다.
+
+#### close util 클래스
+
+```java
+package kr.ac.kopo.util;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+public class JDBCClose {
+	public static void close(Connection conn, Statement pstmt) { // PreparedStatement는 Statement를 상속받기 때문에 묵시적 형변환 가능
+
+		// 5단계 : 자원해제
+		if(pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(conn != null) {
+			try {
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+}
+```
+
+#### ConnectionFactory util 클래스
+
+```java
+package kr.ac.kopo.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+/**
+ * 드라이버 로딩, db접속, 연결객체 반환한다.
+ * url, user, pw 정보가 변경되었을때 수정이 용이하도록 구성한 것이다.
+ * @author HP
+ *
+ */
+public class ConnectionFactory {
+	public Connection getConnection() {
+		
+		Connection conn = null;
+		
+		try {
+			// 1단계
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			// 2단계
+			String url = "jdbc:oracle:thin:@192.168.119.119:1521:dink";
+			String user = "scott";
+			String pw = "tiger";
+			
+			conn = DriverManager.getConnection(url,user,pw);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+					
+		return conn;
+	}
+}
+```
+
+#### SELECT를 util 클래스를 활용해서 단축시키기
+
+```java
+package kr.ar.kopo.jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import kr.ac.kopo.util.ConnectionFactory;
+import kr.ac.kopo.util.JDBCClose;
+
+/**
+ * 자원해제 부분을 util클래스로 만들어두고 재사용
+ * @author HP
+ *
+ */
+public class SelectMain02 {
+	public static void main(String[] args) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 1단계 + 2단계
+			
+			/*
+			ConnectionFactory factory = new ConnectionFactory();
+			conn = factory.getConnection();
+			*/
+			conn = new ConnectionFactory().getConnection();
+			
+			
+			// 3단계
+			String sql = "select * from t_test";
+			pstmt = conn.prepareStatement(sql);
+			
+			// 4단계
+			ResultSet rs = pstmt.executeQuery();
+			
+			
+			/*
+			 * rs.next 메소드에 return 타입이 Boolean 형으로 나온다. 
+			 * 그 다음 레코드가 있으면 true, 없으면 false값을 return한다.
+			 */
+			
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				System.out.println(id + "," + name);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+			// 5단계
+			JDBCClose.close(conn, pstmt);
+		}
+		
+	}
+}
+```
+
 
 
 ## 이클립스 꿀팁 : save 시에 import하기
