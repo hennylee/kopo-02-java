@@ -190,7 +190,11 @@ public class ThreadMain02 {
 
 - `join()` : 어떤 특정한 쓰레드가 종료하기 전까지는 block 상태에서 빠져나오지 않는 것이다. 
 
-- `wait()`, `sync()` : 동기화와 관련된 메소드
+- `wait()`, `notify()`, `notifyAll()` : 동기화와 관련된 메소드
+
+	- wait()는 얼음! notify()는 땡! 이라고 이해할 수 있다. 
+
+	- 만약 a, b, c 세 개가 wait() 상태일 때, 셋 중에 임의의 한 개를 해제시킬 땐 notify(), 셋 전부를 해제시킬 땐 notifyAll()을 사용한다. 
 
 - block 상태에 빠지지 않으면 무조건 Runnable 상태에서 대기한다. 
 
@@ -275,7 +279,185 @@ public class SleepMain02 {
 }
 ```
 
-#### 
+#### 3.3 join()을 통해 세 개의 쓰레드 작동시키기
+
+```java
+package kr.ac.kopo.day17;
+
+
+/*
+ * 쓰레드 구성 2가지 방식
+ * 1. Thread 클래스를 상속 받아서 구현
+ * 2. runnable 인터페이스를 상속 받아서 구현
+ */
+
+
+// 1-1. 인형 눈 붙이는 작업 => Thread 클래스를 상속 받아서 구현
+class ExtendThread2 extends Thread {
+
+	@Override
+	public void run() {
+		for(int i = 0; i < 100; i++) {
+			System.out.println(i+1 + "번째 인형 눈 붙이기...");
+		}
+	}
+	
+}
+
+// 2-1. 인형코 붙이는 작업 => runnable 인터페이스를 상속 받아서 구현
+class ImplementThread2 implements Runnable {
+
+	@Override
+	public void run() {
+		for(int i = 0; i < 100; i++) {
+			System.out.println(i+1+ "번째 인형코 만들기...");
+		}
+	}
+	
+}
+
+
+public class ThreadMain03 {
+	public static void main(String[] args) {
+		
+		// 1-2. Thread 클래스를 상속 받아서 구현한 쓰레드 실행
+		ExtendThread2 et = new ExtendThread2();
+		
+		// 2-2. runnable 인터페이스를 상속 받아서 구현한 쓰레드 실행
+		ImplementThread2 it = new ImplementThread2();
+		Thread t = new Thread(it);
+
+		System.out.println("감독을 시작합니다.");
+		
+		et.start();
+		t.start();
+		
+		
+		// join
+		/* 
+			et나 t 쓰레드가 아니라 메인 쓰레드가 block 상태에 빠지게 된다. 
+		 	대신, et와 t쓰레드가 끝날때까지만 block 상태에 빠진다. 
+		 	매개변수가 있게 되면 해당 시간이 지난 뒤, block 상태를 빠져나오게 된다.
+		*/
+		
+		try {
+			et.join(); 
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} 
+		
+		try {
+			t.join(1); // 0.001초를 기다린 후, block상태에서 빠져나온다.
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} 
+		
+		System.out.println("감독을 종료합니다.");
+		
+	}
+}
+```
+
+#### 3.4 동기화
+
+
+![image](https://user-images.githubusercontent.com/77392444/119453907-e0c72100-bd72-11eb-8615-7527079056d6.png)
+
+
+- 동기화란 실행중일때 다른 작업이 실행될 수 없도록 하는 것을 의미한다.  
+
+- 위의 그림을 예로 들면, 이미 본인이 작업 중인 자원을 아버지가 사용할 수 없도록 Lock을 걸어둔 것을 동기화라고 볼 수 있다. 
+
+- 자바의 `println()`은 동기화 블록을 이미 사용하고 있다. 
+
+- 동기화 블록을 설정하기 위해서는 `synchronized` 키워드를 붙여주면 된다. 
+
+
+```java
+package kr.ac.kopo.day17;
+
+/**
+ * 쓰레드가 자원을 공유하는 구성
+ * @author HP
+ *
+ */
+class Sync {
+	public synchronized void a() {
+		for(int i = 0; i < 10; i++) {
+			System.out.print('a');
+		}
+	}
+	public synchronized void b() {
+		for(int i = 0; i < 10; i++) {
+			System.out.print('b');
+		}
+	}
+	public synchronized void c() {
+		for(int i = 0; i < 10; i++) {
+			System.out.print('c');
+		}
+	}
+	
+	public void d() {
+		System.out.println(1);
+		System.out.println(2);
+		synchronized (this) {
+			System.out.println(3);
+			System.out.println(4);
+			System.out.println(5);
+		}
+		System.out.println(6);
+		System.out.println(7);
+	}
+	
+}
+
+class SyncThread extends Thread {
+	
+	private Sync sync;
+	private int type;
+
+	public SyncThread() {
+	}
+	
+	public SyncThread(Sync sync, int type) {
+		this.sync = sync;
+		this.type = type;
+	}
+	
+	@Override
+	public void run() {
+		switch (type) {
+		case 1:
+			sync.a();
+			break;
+		case 2:
+			sync.b();
+			break;
+		case 3:
+			sync.c();
+			break;
+		}
+	}
+	
+}
+
+public class SyncThreadMain {
+	public static void main(String[] args) {
+		Sync sync = new Sync();
+		
+		// sync라는 자원을 공유하는 세 개의 Thread
+		SyncThread st = new SyncThread(sync, 1);
+		SyncThread st2 = new SyncThread(sync, 2);
+		SyncThread st3 = new SyncThread(sync, 3);
+		
+		st.start();
+		st2.start();
+		st3.start();
+		
+	}
+}
+```
 
 ## 4. 쓰레드의 우선순위
 
