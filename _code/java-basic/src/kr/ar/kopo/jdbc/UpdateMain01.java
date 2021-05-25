@@ -36,11 +36,20 @@ public class UpdateMain01 {
 			System.out.println("수정할 id를 입력하세요 : ");
 			String name = sc.nextLine();
 						
+			/*
 			String sql = "update t_test "
 						+ "set name = ? "
 						+ "where id = ? ";
+			*/
 			
-			pstmt = conn.prepareStatement(sql);
+			StringBuilder sql = new StringBuilder();
+			
+			sql.append("update t_test ");
+			sql.append(" set name = ? ");
+			sql.append(" where id = ? ");
+			
+			// StringBuilder을 String으로 형변환하기 위해서는? toString 메소드를 활용한다. 
+			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, name);
 			pstmt.setString(2, id);
 			
