@@ -460,12 +460,12 @@ public class BoardService {
 	/*
 	서비스는 dao들을 조합하여 실행하여야 하기 때문에, 멤버변수로 dao의 각 객체들을 가지게 만든 것이다.
 	 */
-	//private BoardDAO dao;
-	private BoardDAODB dao;
+	private BoardDAO dao;
+	//private BoardDAODB dao;
 	
 	public BoardService() {
-		//dao = new BoardDAO();
-		dao = new BoardDAODB();
+		dao = new BoardDAO();
+		//dao = new BoardDAODB();
 	}
 	
 	public void 새글등록서비스(BoardVO newbBoard) throws Exception{
