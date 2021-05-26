@@ -65,9 +65,9 @@
 
 ## hr계정 열기
 
-1. SQLPLUS 열기
+#### 1. SQLPLUS 열기
 
-2. SQLPlus에서 HR 스키마 설치하기
+#### 2. SQLPlus에서 HR 스키마 설치하기
 
 ```
 SQL*Plus: Release 18.0.0.0.0 - Production on 수 5월 26 14:33:43 2021
@@ -108,7 +108,7 @@ specify log path as parameter 4:
 4의 값을 입력하십시오: $ORACLE_HOME/demo/schema/log/
 ```
 
-3. SQLPlus에서 HR 계정 설정 변경하기
+#### 3. SQLPlus에서 HR 계정 설정 변경하기
 
 ```
 SQL> ALTER USER hr ACCOUNT unlock;
