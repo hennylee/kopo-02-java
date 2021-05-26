@@ -212,7 +212,7 @@ public class URLMain {
 
 - 서버가 먼저 만들어져야 클라이언트에서 접속할수 있다.
 
-#### 4.6.1 서버
+#### 4.6.1 서버 (1:1)
 
 ```java
 package kr.ac.kopo.day18;
@@ -268,7 +268,7 @@ public class AppServerMain {
 ![image](https://user-images.githubusercontent.com/77392444/119593805-95b21a00-be15-11eb-8de2-51d56e5c9c98.png)
 
 
-#### 4.6.2 클라이언트
+#### 4.6.2 클라이언트 (1:1)
 
 ```java
 package kr.ac.kopo.day18;
@@ -315,11 +315,329 @@ public class AppClientMain {
 
 ![image](https://user-images.githubusercontent.com/77392444/119593862-b5494280-be15-11eb-9d15-dc13cf631ab6.png)
 
-### 4.7 에코서버 만들기 (1:1 통신)
+### 4.7 에코서버 소켓 통신 만들기 (1:1 통신)
 
 - 클라이언트가 서버에게 뭔가를 전송하고, 전송한 것을 다시 클라이언트에게 보내주는 것을 '에코서버'라고 한다. 
 
 
-#### 서버
+#### 4.7.1 에코 서버 (1:1)
 
-#### 클라이언트
+```java
+package kr.ac.kopo.day18;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class EchoServerMain {
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(10001);
+			
+			Socket client = server.accept();  // 클라이언트의 접속 기다리기
+			System.out.println("접속한 클라이언트 IP : " + client.getInetAddress().getHostAddress());
+			System.out.println("접속한 클라이언트 이름 : " + client.getInetAddress().getHostName());
+			
+			
+			// 1. 클라이언트에서 전송한 데이터를 수신할 수 있는 객체 
+			InputStream is = client.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr); // 속도를 빠르게 하는 필터
+			
+			
+			// 2. 수신한 데이터를 클라이언트에 재전송할 객체
+			OutputStream os = client.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			PrintWriter pw = new PrintWriter(osw);
+
+			while(true) {				
+				String msg = br.readLine();
+				System.out.println("클라이언트에서 전달된 메세지 : " + msg);
+				
+				if(msg == null) {
+					client.close();
+					break;
+				}
+				System.out.println("클라이언트와의 접속을 종료합니다.");
+				
+				/*
+				pw.write(msg);
+				pw.write('\n');
+				 */
+				
+				pw.println(msg);
+				pw.flush();
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
+- 콘솔 결과
+
+![image](https://user-images.githubusercontent.com/77392444/119602888-1cbbbe00-be27-11eb-8a61-64bcb915bc58.png)
+
+
+
+
+####  4.7.2 에코 클라이언트 (1:1)
+
+```java
+package kr.ac.kopo.day18;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class EchoClientMain {
+	public static void main(String[] args) {
+		try {
+			Socket socket = new Socket("localhost", 10001);
+			// 1-1. 키보드로 입력받을 객체
+			// Scanner는 1.5버전부터 나왔다. 
+			BufferedReader keyboard 
+					= new BufferedReader(new InputStreamReader(System.in));
+			
+			// 1-2. 클라이언트가 키보드로 입력받은 데이터를 서버에게 전달하기 위한 전달 객체
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			PrintWriter pw = new PrintWriter(osw); // 속도를 빠르게 하는 버퍼의 기능을 print가 대체할 수 있다. 
+			
+
+			// 1-3. 서버에서 재전송한 데이터를 수신하기 위한 수신 객체
+			InputStream is = socket.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			
+			while(true) {
+				
+				// 2-1. 키보드로 입력 받기
+				System.out.print("메세지를 입력(quit 입력시 종료) : ");
+				String msg = keyboard.readLine();
+				
+				if(msg.equalsIgnoreCase("quit")) {
+					System.out.println("서버 연결을 종료합니다.");
+					socket.close();
+					break;
+				}
+				
+				// 2-2. 키보드로 입력받은 메세지 전달하기
+				/*
+				pw.write(msg);
+				pw.write('\n');
+				 */
+				
+				pw.println(msg);
+				pw.flush();
+				
+				// 2-3. 서버에서 보낸 메세지 받기
+				String echMsg = br.readLine();
+				System.out.println("서버에서 전송한 메세지 : " + echMsg);
+			}
+ 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
+- 콘솔결과
+
+![image](https://user-images.githubusercontent.com/77392444/119602939-2fce8e00-be27-11eb-8b31-12530e66d077.png)
+
+
+### 4.8 에코서버 만들기(1:N)
+
+- 한 명의 클라이언트가 메세지 전송하는 동안에 다른 클라이언트가 접속해도 작동하게 하려면, 쓰레드로 구성해야 한다.
+
+#### 4.8.1 에코 쓰레드 서버 (1:N)
+
+```java
+package kr.ac.kopo.day18;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class EchoThreadServerMain {
+	
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(10001);
+			System.out.println("EchoThread 서버를 시작...");
+			
+			
+			/*
+			소켓이 3개 필요하다면, accept도 3번 필요하다.
+			연결이 올때마다 소켓을 만들어내려면 accept()가 while문 안에 있어야 한다. 
+			 */
+			
+			while(true) {
+				Socket client = server.accept();
+				
+				/*
+				각 소켓마다 읽고 쓰기 작업을 수행해야 하니까, 
+				읽고 쓰기 작업이 쓰레드로 존재해야 한다.
+				쓰레드에 client 정보를 전달해야 한다. 
+				 */
+				EchoThread et = new EchoThread(client);
+				et.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+
+class EchoThread extends Thread {
+
+	private Socket socket;
+	
+	public EchoThread() {
+
+	}
+
+	public EchoThread(Socket socket) {
+		this.socket = socket;
+	}
+	
+	@Override
+	public void run() {
+		
+		try {
+			// 접속한 클라이언트 정보
+			InetAddress client = socket.getInetAddress();
+			System.out.println("client : " + client);
+			
+			// 클라이언트가 작성한 내용 읽어오는 객체
+			InputStream is = socket.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			
+			// 클라이언트가 작성한 내용 써줄 객체
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			PrintWriter pw = new PrintWriter(osw);
+			
+			// 클라이언트에게 읽고 쓰기
+			while(true) {				
+				
+				// 읽기
+				String msg = br.readLine();
+				
+				if(msg == null) {
+					socket.close();
+					System.out.println("["+ client.getHostAddress() +"]와의 접속을 종료합니다.");
+					break;
+				}
+				System.out.println("["+ client.getHostAddress() +"]에서 전달된 메세지 : " + msg);
+				
+				// 쓰기
+				/*
+				pw.write(msg);
+				pw.write('\n');
+				 */
+				
+				pw.println(msg);
+				pw.flush();
+				
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
+````
+
+#### 4.8.2 에코 클라이언트 (1:1)
+
+```java
+package kr.ac.kopo.day18;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class EchoClientMain {
+	public static void main(String[] args) {
+		try {
+			Socket socket = new Socket("localhost", 10001);
+			// Socket socket = new Socket("192.168.217.57", 10001);
+			
+			// 1-1. 키보드로 입력받을 객체
+			// Scanner는 1.5버전부터 나왔다. 
+			BufferedReader keyboard 
+					= new BufferedReader(new InputStreamReader(System.in));
+			
+			// 1-2. 클라이언트가 키보드로 입력받은 데이터를 서버에게 전달하기 위한 전달 객체
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			PrintWriter pw = new PrintWriter(osw); // 속도를 빠르게 하는 버퍼의 기능을 print가 대체할 수 있다. 
+			
+
+			// 1-3. 서버에서 재전송한 데이터를 수신하기 위한 수신 객체
+			InputStream is = socket.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			
+			while(true) {
+				
+				// 2-1. 키보드로 입력 받기
+				System.out.print("메세지를 입력(quit 입력시 종료) : ");
+				String msg = keyboard.readLine();
+				
+				if(msg.equalsIgnoreCase("quit")) {
+					System.out.println("서버 연결을 종료합니다.");
+					socket.close();
+					break;
+				}
+				
+				// 2-2. 키보드로 입력받은 메세지 전달하기
+				/*
+				pw.write(msg);
+				pw.write('\n');
+				 */
+				
+				pw.println(msg);
+				pw.flush();
+				
+				// 2-3. 서버에서 보낸 메세지 받기
+				String echMsg = br.readLine();
+				System.out.println("서버에서 전송한 메세지 : " + echMsg);
+			}
+ 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
