@@ -515,6 +515,21 @@ public class BoardServiceFactory {
 
 ## 3. Oracle DB로 CRUD 기능 구현해보기
 
+### 3.0 Orcale : 테이블 생성
+
+```sql
+-- 게시판(자바콘솔)
+CREATE TABLE tbl_board(
+    no number(5) primary key,
+    title varchar2(100) not null,
+    writer varchar2(100) not null,
+    reg_date date default sysdate
+);
+
+-- 게시판 일련번호 생성
+create sequence seq_tbl_board_no;
+```
+
 ### 3.1. UI : 콘솔창
 
 #### IBoardUI : 인터페이스
