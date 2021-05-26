@@ -82,7 +82,7 @@ public class HomeworkMain03 {
 		System.out.print("콜센터를 선택하세요 : ");
 		int call = Integer.parseInt(sc.next());
 		
-		int donation = getDonation();
+		int donation = 0;
 		
 		switch(call) {
 		case 1:
