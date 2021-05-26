@@ -63,6 +63,63 @@
 ![image](https://user-images.githubusercontent.com/77392444/119309038-b6a92c80-bca8-11eb-9ad8-911a7035006c.png)
 
 
+## hr계정 열기
+
+1. SQLPLUS 열기
+
+2. SQLPlus에서 HR 스키마 설치하기
+
+```
+SQL*Plus: Release 18.0.0.0.0 - Production on 수 5월 26 14:33:43 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+사용자명 입력: sqlplus / as sysdba
+비밀번호 입력:
+
+다음에 접속됨:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> alter user hr account unlock;
+alter user hr account unlock
+           *
+1행에 오류:
+ORA-01918: 사용자 'HR'(이)가 존재하지 않습니다
+
+
+SQL> ALTER SESSION SET "_ORACLE_SCRIPT" = true;
+
+세션이 변경되었습니다.
+
+SQL> @?/demo/schema/human_resources/hr_main.sql
+
+specify password for HR as parameter 1:
+1의 값을 입력하십시오: hr
+
+specify default tablespeace for HR as parameter 2:
+2의 값을 입력하십시오: user
+
+specify temporary tablespace for HR as parameter 3:
+3의 값을 입력하십시오: temp
+
+specify log path as parameter 4:
+4의 값을 입력하십시오: $ORACLE_HOME/demo/schema/log/
+```
+
+3. SQLPlus에서 HR 계정 설정 변경하기
+
+```
+SQL> ALTER USER hr ACCOUNT unlock;
+
+User altered.
+
+SQL> ALTER USER hr IDENTIFIED BY hr;
+
+User altered.
+```
+
 
 ## jdbc 다운로드
 
