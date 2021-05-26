@@ -8,7 +8,7 @@
 3. TCP 관련 : Socket, ServerSocket
 
 
-### 1.1 InetAddress API
+## 2. InetAddress API
 
 - IP 관련 정보를 받아올 때 사용하는 클래스
 
@@ -61,7 +61,7 @@ public class InetAddressMain {
 }
 ```
 
-### 1.2 URL API
+## 3. URL API
 
 - 공식문서 : https://docs.oracle.com/javase/8/docs/api/java/net/URL.html
 
@@ -133,10 +133,10 @@ public class URLMain {
 ```
 
 
-### 1.3 ServerSocket API
+## 4. ServerSocket API
 
 
-#### 소켓(Socket)이란?
+### 소켓(Socket)이란?
 
 ![image](https://user-images.githubusercontent.com/77392444/119587900-9b563280-be0a-11eb-9367-e212a097ae76.png)
 
@@ -150,7 +150,7 @@ public class URLMain {
   - 데이터그램 소켓 - UDP / 소켓통신 - TCP
   - [TCP 3 Way-Handshake](https://sleepyeyes.tistory.com/4)
 
-#### 호스트와 포트
+### 호스트와 포트
 
 - 호스트주소 : 하나의 컴퓨터에 할당된 고유의 이름
 
@@ -168,6 +168,6 @@ public class URLMain {
 
 - 호스트는 전화번호에, 포트는 내선번호에 비유할 수 있다.
 
-#### 서버와 클라이언트
+### 서버와 클라이언트
 
 - 예를 들어, 자료를 다운받을 때 자료를 가지고 있는 컴퓨터가 서버이고 자료를 다운받는 컴퓨터가 클라이언트이다. 
