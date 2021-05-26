@@ -67,6 +67,8 @@
 
 #### 1. SQLPLUS 열기
 
+![image](https://user-images.githubusercontent.com/77392444/119608063-4decbc00-be30-11eb-8adf-52bdd9b1948a.png)
+
 #### 2. SQLPlus에서 HR 스키마 설치하기
 
 ```
