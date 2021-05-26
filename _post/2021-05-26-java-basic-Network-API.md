@@ -210,6 +210,9 @@ public class URLMain {
 
 ### 4.6 내 컴퓨터 내에서 다른 포트로 서로 통신하는 프로그램 만들기(1:1 통신)
 
+![image](https://user-images.githubusercontent.com/77392444/119635815-0164a900-be4f-11eb-9efd-6063c99a3af2.png)
+
+
 - 서버가 먼저 만들어져야 클라이언트에서 접속할수 있다.
 
 #### 4.6.1 서버 (1:1)
@@ -316,6 +319,9 @@ public class AppClientMain {
 ![image](https://user-images.githubusercontent.com/77392444/119593862-b5494280-be15-11eb-9d15-dc13cf631ab6.png)
 
 ### 4.7 에코서버 소켓 통신 만들기 (1:1 통신)
+
+![image](https://user-images.githubusercontent.com/77392444/119635861-0e819800-be4f-11eb-9efa-6f93ab1da096.png)
+
 
 - 클라이언트가 서버에게 뭔가를 전송하고, 전송한 것을 다시 클라이언트에게 보내주는 것을 '에코서버'라고 한다. 
 
@@ -460,6 +466,8 @@ public class EchoClientMain {
 
 
 ### 4.8 에코서버 만들기(1:N)
+
+
 
 - 한 명의 클라이언트가 메세지 전송하는 동안에 다른 클라이언트가 접속해도 작동하게 하려면, 쓰레드로 구성해야 한다.
 
