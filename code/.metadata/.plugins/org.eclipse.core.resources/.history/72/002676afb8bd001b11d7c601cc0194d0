@@ -1,0 +1,10 @@
+package kr.ac.kopo.day18;
+
+import java.net.URL;
+
+public class URLMain {
+	public static void main(String[] args) {
+		URL urlObj = new URL("http://www.naver.com");
+	}
+
+}

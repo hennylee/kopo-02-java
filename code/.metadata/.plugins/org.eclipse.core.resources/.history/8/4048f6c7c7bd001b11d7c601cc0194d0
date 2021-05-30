@@ -1,0 +1,15 @@
+package kr.ac.kopo.day18;
+
+import java.net.Socket;
+
+/**
+ * AppServer에 접속해서 상호 통신하는 것이 목적이다. 
+ * @author HP
+ *
+ */
+public class AppClientMain {
+	public static void main(String[] args) {
+		Socket socket = new Socket();
+		
+	}
+}

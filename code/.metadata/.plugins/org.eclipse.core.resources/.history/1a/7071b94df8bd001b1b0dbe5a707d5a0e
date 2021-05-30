@@ -1,0 +1,11 @@
+package kr.ac.kopo.service;
+
+import kr.ac.kopo.vo.BoardVO;
+
+public class BoardSequence {
+	private static int no = 1;
+	
+	public static int getNo() {
+		return BoardSequence.no++;
+	}
+}

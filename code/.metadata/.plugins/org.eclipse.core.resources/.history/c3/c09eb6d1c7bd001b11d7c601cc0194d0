@@ -1,0 +1,21 @@
+package kr.ac.kopo.day18;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+/**
+ * AppServer에 접속해서 상호 통신하는 것이 목적이다. 
+ * @author HP
+ *
+ */
+public class AppClientMain {
+	public static void main(String[] args) {
+		try {
+			Socket socket = new Socket("localhost", 10000);// ip와 port를 알아야 한다. 
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} 
+		
+	}
+}

@@ -1,0 +1,22 @@
+package kr.ac.kopo.day18;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class URLMain {
+	public static void main(String[] args) {
+		try {
+			URL urlObj = new URL("http://www.naver.com");
+			
+			// 프로토콜을 알고 싶을 때
+			System.out.println("프로토콜 : " +  urlObj.getProtocol());
+			System.out.println("호스트명 : " +  urlObj.getHost());
+			System.out.println("포트 : " +  urlObj.getPort());
+			
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

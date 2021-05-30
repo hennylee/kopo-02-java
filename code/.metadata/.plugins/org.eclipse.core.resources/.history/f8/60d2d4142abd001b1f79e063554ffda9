@@ -1,0 +1,21 @@
+package kr.ac.kopo.day17;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class InetAddressMain {
+	public static void main(String[] args) {
+		
+		try {
+			InetAddress localhost = InetAddress.getLocalHost();
+			
+			System.out.println("내 컴퓨터의 네트워크 이름 : "+localhost.getHostName());
+			System.out.println("내 컴퓨터의 IP 주소 : "+localhost.getHostAddress());
+			System.out.println(localhost);
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+}

@@ -1,0 +1,15 @@
+package kr.ac.kopo.day18;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class AppServerMain {
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(10000);// 네트워크는 예외처리 필요함
+			System.out.println("어플리케이션 서버 실행....");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+	}
+}

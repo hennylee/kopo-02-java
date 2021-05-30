@@ -1,0 +1,15 @@
+package kr.ac.kopo.day16;
+
+public class FileIOMain10 {
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+		write();
+		UserInfo user = new UserInfo("홍길동", 25, "서울시 서초구");
+		
+		file
+	}
+}

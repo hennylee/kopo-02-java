@@ -1,0 +1,11 @@
+package kr.ac.kopo.dao;
+/**
+ * 게시판들을 관리하는 것이 목적이다.
+ * @author HP
+ *
+ */
+import kr.ac.kopo.vo.*;
+
+public class BoardDAO {
+	private List<BoardVO> list;
+}

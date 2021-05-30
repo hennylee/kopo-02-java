@@ -1,0 +1,29 @@
+package kr.ac.kopo.ui;
+/**
+ * 매번 Scanner 쓰는 것 귀찮으니까 만들어둔 클래스이다.
+ * @author HP
+ *
+ */
+
+import java.util.Scanner;
+
+public class BaseUI {
+	private Scanner sc = new Scanner(System.in);
+	
+	public BaseUI() {
+		sc = new Scanner(System.in);
+	}
+	
+	// 같은 패키지 아니어도 상속받은 클래스 내에서만 쓰고 싶다면? => protected
+	protected String scanStr(String msg) {
+		System.out.println(msg);
+		String str = sc.nextLine();
+		return str;
+	}
+	
+	protected int scanInt(String msg) {
+		// scanStr(String msg)으로 입력받은 것을 정수로 파싱
+		int num = Integer.parseInt(scanStr(msg));
+		return num;
+	}
+}

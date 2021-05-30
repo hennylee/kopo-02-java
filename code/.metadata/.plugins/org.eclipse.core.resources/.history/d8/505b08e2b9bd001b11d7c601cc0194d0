@@ -1,0 +1,29 @@
+package kr.ac.kopo.day18;
+
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class URLMain {
+	public static void main(String[] args) {
+		try {
+//			URL urlObj = new URL("http://www.naver.com:80");
+			URL urlObj = new URL("https://comic.naver.com/webtoon/list.nhn?titleId=670143&weekday=wed");
+			
+			// URL 정보를 알고 싶을 때 사용하는 메소드
+			System.out.println("프로토콜 : " +  urlObj.getProtocol());
+			System.out.println("호스트명 : " +  urlObj.getHost());
+			System.out.println("포트 : " +  urlObj.getPort()); // 포트를 명시하지 않으면 -1로 인식
+			System.out.println("경로 : " +  urlObj.getPath());
+			System.out.println("쿼리 : " +  urlObj.getQuery());
+			
+			// openStream 메소드
+			System.out.println("===================================================================");
+			InputStream is = urlObj.openStream();
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

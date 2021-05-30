@@ -1,0 +1,8 @@
+package kr.ac.kopo.util;
+
+import java.sql.Connection;
+
+public class JDBCClose {
+	public static void close(Connection conn, Statement pstmt) {
+	}
+}

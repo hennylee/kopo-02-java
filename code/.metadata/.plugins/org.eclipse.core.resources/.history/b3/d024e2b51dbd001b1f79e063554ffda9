@@ -1,0 +1,7 @@
+package kr.ac.kopo.day17;
+
+public class SleepMain {
+	public static void main(String[] args) {
+		System.out.println("Thread가 2초동안 잠이 들겠습니다.");
+	}
+}

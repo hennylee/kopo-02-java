@@ -1,0 +1,9 @@
+package kr.ac.kopo.day16;
+
+public class UserInfo {
+	private String name;
+	private int age;
+	private String addr;
+	
+	// 생성자
+}

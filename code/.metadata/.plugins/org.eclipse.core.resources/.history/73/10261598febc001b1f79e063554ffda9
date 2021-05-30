@@ -1,0 +1,21 @@
+package kr.ac.kopo.day17;
+
+import java.io.File;
+
+public class FileMain {
+	
+	public static void main(String[] args) {
+		
+		// iodata/a.txt의 내용 읽기
+		File fileObj = new File("iodata/a.txt");
+		String name = fileObj.getName();
+		String parent = fileObj.getParent();
+		
+		System.out.println("파일명 : " + name);
+		System.out.println("부모 : " + parent);
+	}
+
+	
+	
+	
+}

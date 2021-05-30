@@ -1,0 +1,66 @@
+package kr.ac.kopo.day17.homework;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class HomeworkMain02 {
+	
+	
+	public void printDirList(String dirName) {
+		File dirObj = new File(dirName);
+		
+		String[] list = dirObj.list();
+		
+		for(String name : list ) {
+			// 파일 이름
+			
+			// 파일 종류
+			
+			// 파일 크기
+			
+			// 파일 마지막 수정 날짜
+		}
+		
+		
+		if(dirObj.exists() && dirObj.isDirectory()) {
+			
+		}
+		
+	}
+	
+	public void selectMenu() {
+		
+	}
+	
+	
+
+	public static void main(String[] args) {
+		System.out.println("------------------------------------------");
+		System.out.println("\tiodata 폴더 정보");
+		System.out.println("------------------------------------------");
+		System.out.println("이름			종류		크기		마지막수정날짜");
+		System.out.println("------------------------------------------");
+		
+		// 폴더 출력하기
+		
+		while(true) {
+			
+			Scanner sc = new Scanner(System.in);
+			System.out.print("[M]새폴더  [R]이름변경  [D]삭제 [.]상위폴더이동 [move]하위폴더 이동 : ");
+			String menu = sc.nextLine(); // 원하는 메뉴 입력받기
+			String dirName = sc.nextLine(); // 폴더명 입력받기
+			
+			
+			System.out.println("------------------------------------------");
+			System.out.println("\t"+ dirName +" 폴더 정보");
+			System.out.println("------------------------------------------");
+			System.out.println("이름			종류		크기		마지막수정날짜");
+			System.out.println("------------------------------------------");
+			
+			// 폴더 출력하기
+			
+		}
+		
+	}
+
+}

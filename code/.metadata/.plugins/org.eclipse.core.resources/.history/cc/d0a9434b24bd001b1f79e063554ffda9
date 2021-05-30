@@ -1,0 +1,7 @@
+package kr.ac.kopo.day17;
+
+public class SyncThreadMain {
+	public static void main(String[] args) {
+		
+	}
+}

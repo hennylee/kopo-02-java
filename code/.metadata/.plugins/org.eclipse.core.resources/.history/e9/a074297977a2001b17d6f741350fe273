@@ -1,0 +1,8 @@
+package kr.ac.kopo.inter;
+
+import java.util.Scanner;
+
+public interface inputInt {
+	Scanner sc = new Scanner(System.in);
+	int num = Integer.parseInt(sc.next());
+}

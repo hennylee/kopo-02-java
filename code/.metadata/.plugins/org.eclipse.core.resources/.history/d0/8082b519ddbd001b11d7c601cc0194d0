@@ -1,0 +1,24 @@
+package kr.ac.kopo.day18;
+
+import java.net.ServerSocket;
+
+public class EchoThreadServerMain {
+	
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(10001);
+			System.out.println("EchoThread 서버를 시작...");
+			
+			/*
+			소켓이 3개 필요하다면, accept도 3번 필요하다.
+			 */
+			
+			while(true) {
+				server.accept();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

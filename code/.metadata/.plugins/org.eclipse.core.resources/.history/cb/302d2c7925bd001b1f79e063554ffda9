@@ -1,0 +1,57 @@
+package kr.ac.kopo.day17;
+
+/**
+ * 쓰레드가 자원을 공유하는 구성
+ * @author HP
+ *
+ */
+class Sync {
+	public void a() {
+		for(int i = 0; i < 10; i++) {
+			System.out.println('a');
+		}
+	}
+	public void b() {
+		for(int i = 0; i < 10; i++) {
+			System.out.println('b');
+		}
+	}
+	public void c() {
+		for(int i = 0; i < 10; i++) {
+			System.out.println('c');
+		}
+	}
+}
+
+class SyncThread extends Thread {
+	
+	private Sync sync;
+	private int type;
+
+	public SyncThread() {
+	}
+	
+	public SyncThread(Sync sync, int type) {
+		this.sync = sync;
+		this.type = type;
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		super.run();
+	}
+	
+}
+
+public class SyncThreadMain {
+	public static void main(String[] args) {
+		Sync sync = new Sync();
+		
+		// sync라는 자원을 공유하는 세 개의 Thread
+		SyncThread st = new SyncThread(sync, 1);
+		SyncThread st2 = new SyncThread(sync, 2);
+		SyncThread st3 = new SyncThread(sync, 3);
+		
+	}
+}

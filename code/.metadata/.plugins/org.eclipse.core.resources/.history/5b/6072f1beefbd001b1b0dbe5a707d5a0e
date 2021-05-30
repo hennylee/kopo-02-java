@@ -1,0 +1,9 @@
+package kr.ac.kopo.dao;
+/**
+ * 게시판들을 관리하는 것이 목적이다.
+ * @author HP
+ *
+ */
+public class BoardDAO {
+	private List<게시판 정보> list;
+}

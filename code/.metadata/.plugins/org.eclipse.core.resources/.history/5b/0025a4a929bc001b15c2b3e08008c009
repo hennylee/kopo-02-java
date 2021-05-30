@@ -1,0 +1,26 @@
+package kr.ac.kopo.day17;
+// 목표  : iodata패키지의 FileIOMain04.java를 FileIOMain04.java.txt로 복사하기
+
+import java.io.FileReader;
+import java.io.FileWriter;
+
+import kr.ac.kopo.utill.FileClose;
+
+public class FileIOMain07 {
+	
+	public static void main(String[] args) {
+		
+		FileReader fr = null;
+		FileWriter fw = null;
+ 		
+		try {
+			fr = new FileReader("iodata/FileIOMain04.java");
+			fw = new FileWriter("iodata/FileIOMain04.java.txt");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			FileClose.close(fr, fw);
+		}
+		
+	}
+}

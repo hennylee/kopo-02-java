@@ -1,0 +1,6 @@
+package kr.ac.kopo.day16;
+
+// VO : Value Object
+public class UserVO {
+
+}

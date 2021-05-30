@@ -1,0 +1,28 @@
+package kr.ac.kopo.day16;
+
+import java.io.Writer;
+
+public class FileIOMain10 {
+	
+	public static void write() throws Exception{
+		
+	}
+	
+	public static void read() throws Exception {
+		
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		try {
+			write();
+			read();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

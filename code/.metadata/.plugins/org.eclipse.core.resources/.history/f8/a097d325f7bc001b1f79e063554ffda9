@@ -1,0 +1,22 @@
+package kr.ar.kopo.jdbc;
+
+/**
+ * 1.7버전의 try ~ catch ~ resource 문을 사용해보기
+ * @author HP
+ *
+ */
+
+
+public class SelectMain03 {
+	public static void main(String[] args) {
+		
+		try (
+				Test t = new Test();
+		) {
+			
+		} catch (Exception e) {
+			
+		}
+		
+	}
+}

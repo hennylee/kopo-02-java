@@ -1,0 +1,15 @@
+package kr.ac.kopo.util;
+
+import java.sql.Connection;
+
+/**
+ * 드라이버 로딩, db접속, 연결객체 반환
+ * @author HP
+ *
+ */
+public class ConnectionFactory {
+	public Connection getConnection() {
+		Connection conn = null;
+		return conn;
+	}
+}

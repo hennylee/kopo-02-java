@@ -1,0 +1,17 @@
+package kr.ac.kopo.day18;
+
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class EchoServerMain {
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(10001);
+			
+			Socket client = server.accept();  // 클라이언트의 접속 기다리기
+			System.out.println("접속한 클라이언트 정보 : " + client);
+			
+		} catch (Exception e) {
+		}
+	}
+}

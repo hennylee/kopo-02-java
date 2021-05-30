@@ -1,0 +1,11 @@
+package kr.ac.kopo.day17.homework;
+
+import java.sql.Connection;
+
+public class ConnectionUtil {
+	Connection conn = null;
+	
+	public Connection getConnection() {
+		return conn;
+	}
+}

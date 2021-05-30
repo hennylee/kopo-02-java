@@ -1,0 +1,25 @@
+package kr.ac.kopo.day17;
+
+import java.util.Date;
+
+class TimeThread extends Thread {
+
+	@Override
+	public void run() {
+		while(true) {
+			Thread.sleep(1000); // 1초동안 block
+			System.out.println("현재시간 : " + new Date().toLocaleString());
+		}
+	}
+	
+	
+}
+
+public class SleepMain02 {
+	public static void main(String[] args) {
+		while(true) {
+			System.out.println("go!!!!!!!");
+		}
+	}
+
+}

@@ -1,0 +1,27 @@
+package kr.ac.kopo.day17;
+
+import java.io.File;
+
+public class FileMain {
+	
+	public static void main(String[] args) {
+		
+		// iodata/a.txt의 정보 읽기
+		File fileObj = new File("iodata/a.txt");
+//		File fileObj = new File("C:\\kopo-02-java\\_code\\java-basic\\iodata\\a.txt");
+
+		String name = fileObj.getName();
+		String parent = fileObj.getParent();
+		String path = fileObj.getPath();
+		String abPath = fileObj.getAbsolutePath();
+		
+		System.out.println("파일명 : " + name);
+		System.out.println("부모 : " + parent);
+		System.out.println("경로 : " + path);
+		System.out.println("절대경로 : " + abPath);
+	}
+
+	
+	
+	
+}

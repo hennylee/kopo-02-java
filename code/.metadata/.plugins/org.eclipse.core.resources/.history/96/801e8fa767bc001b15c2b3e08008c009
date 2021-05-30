@@ -1,0 +1,20 @@
+package kr.ar.kopo.jdbc;
+/*
+목표
+ 	수정할 ID를 입력하세요 : HONG
+ 	수정할 이름을 입력하세요 : 홍길순
+ */
+public class UpdateMain01 {
+	public static void main(String[] args) {
+		try {
+			
+			// 1단계
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			// 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

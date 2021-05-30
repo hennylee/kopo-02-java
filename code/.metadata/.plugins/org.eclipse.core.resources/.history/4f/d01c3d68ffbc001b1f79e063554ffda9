@@ -1,0 +1,38 @@
+package kr.ac.kopo.day17;
+
+import java.io.File;
+
+public class FileMain {
+	
+	public static void main(String[] args) {
+		
+		// iodata/a.txt의 정보 읽기
+		File fileObj = new File("iodata/a32.txt"); // 상대경로
+		
+		// File fileObj = new File("C:\\kopo-02-java\\_code\\java-basic\\iodata\\a.txt"); 절대경로
+
+		String name = fileObj.getName();
+		String parent = fileObj.getParent();
+		String path = fileObj.getPath();
+		String abPath = fileObj.getAbsolutePath();
+		
+		System.out.println("파일명 : " + name);
+		System.out.println("부모 : " + parent);
+		System.out.println("경로 : " + path);
+		System.out.println("절대경로 : " + abPath);
+		
+		boolean bool = fileObj.isFile();
+		System.out.println(bool? "파일입니다" : "파일이 아닙니다.");
+		
+		bool = fileObj.isDirectory();
+		System.out.println(bool? "디렉토리입니다" : "디렉토리가 이닙니다.");
+		
+		bool = fileObj.exists();
+		System.out.println(bool? "존재합니다" : "존재하지 않습니다.");
+		
+	}
+
+	
+	
+	
+}
