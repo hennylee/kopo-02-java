@@ -57,13 +57,13 @@ public class ThreadMain03 {
 		*/
 		
 		try {
-			et.join(1); // 0.001초를 기다린 후, block상태에서 빠져나온다.
+			et.join(); // 매개변수에 1을 쓰면 0.001초를 기다린 후, block상태에서 빠져나온다.
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} 
 		
 		try {
-			t.join(1); // 0.001초를 기다린 후, block상태에서 빠져나온다.
+			t.join(); // 매개변수에 1을 쓰면 0.001초를 기다린 후, block상태에서 빠져나온다.
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} 
