@@ -1,5 +1,12 @@
 package kr.ac.kopo.day17.homework;
 
+
+/*
+ * 해결하지 못한 오류!!!!
+ * 
+ * 1번과 4번이 동시에 종료됐을때? 종료 문구가 비 순차적으로 뜸
+ * 
+ */
 import java.util.Random;
 
 class DonationThread {

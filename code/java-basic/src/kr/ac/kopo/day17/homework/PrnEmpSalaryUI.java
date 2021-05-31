@@ -2,7 +2,7 @@ package kr.ac.kopo.day17.homework;
 
 import java.util.Scanner;
 
-public class HomeworkMain01 {
+public class PrnEmpSalaryUI {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
