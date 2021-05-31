@@ -2,6 +2,8 @@
 
 ## 1. 패키지 구성
 
+![image](https://user-images.githubusercontent.com/77392444/120125720-daaec580-c1f4-11eb-957f-3cded7f4c26b.png)
+
 ```
 흐름 : `UI`가 `Service` 호출 ➡️ `Service`가 `DAO` 호출
 ```
