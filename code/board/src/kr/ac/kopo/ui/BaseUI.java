@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import kr.ac.kopo.service.BoardService;
 import kr.ac.kopo.service.BoardServiceFactory;
-
 /*
 	[abstract class]
 	

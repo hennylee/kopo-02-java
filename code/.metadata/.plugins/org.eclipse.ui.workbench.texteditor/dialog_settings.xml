@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="&lt;!Dko&quot;&gt;"/>
+		<item key="selection" value="="/>
 		<list key="findhistory">
+			<item value="===================================================================================="/>
+			<item value="-"/>
 			<item value="&lt;!Dko&quot;&gt;"/>
 			<item value="반납"/>
 			<item value="대출"/>
@@ -21,10 +23,9 @@
 			<item value="bookList"/>
 			<item value="printM"/>
 			<item value="print"/>
-			<item value="SearchBook"/>
-			<item value="Bookinfo"/>
 		</list>
 		<list key="replacehistory">
+			<item value="="/>
 			<item value="100"/>
 			<item value="str3"/>
 			<item value="str4"/>

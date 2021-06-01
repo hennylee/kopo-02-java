@@ -1,7 +1,0 @@
-package kr.ar.kopo.jdbc;
-
-public class InesertMain01 {
-	public static void main(String[] args) {
-		
-	}
-}

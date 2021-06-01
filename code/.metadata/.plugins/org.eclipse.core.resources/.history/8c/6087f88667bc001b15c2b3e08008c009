@@ -1,8 +1,0 @@
-package kr.ar.kopo.jdbc;
-/*
- * 수정할 ID를 입력하세요 : HONG
- * 수정할 이름을 입력하세요 : 홍길순
- */
-public class UpdateMain01 {
-
-}

@@ -6,6 +6,7 @@ public class BoardMain {
 	public static void main(String[] args) {
 		
 		BoardUI ui = new BoardUI();
+		
 		try {
 			ui.execute();// public void execute() throws Exception 이기 때문에 예외처리가 필요함
 		} catch (Exception e) {
