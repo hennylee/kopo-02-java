@@ -1,7 +1,13 @@
-package kr.ac.kopo.ui;
+package kr.ac.kopo.ui.account;
 
-public class HanaMemberUI extends BaseUI{
-	
+import kr.ac.kopo.ui.AtmUI;
+import kr.ac.kopo.ui.BaseUI;
+import kr.ac.kopo.ui.ExitUI;
+import kr.ac.kopo.ui.IBankUI;
+import kr.ac.kopo.ui.onlineUI;
+
+public class UpdateAccountUI extends BaseUI {
+
 	@Override
 	public void execute() throws Exception {
 		
@@ -12,16 +18,10 @@ public class HanaMemberUI extends BaseUI{
 			
 			switch(type) {
 			case 1:
-				// ui = new oftenAccountUI();
+				ui = new onlineUI();
 				break;
 			case 2:
-				ui = new MyAccountUI();
-				break;
-			case 3:
-				ui = new OpenBankingUI();
-				break;
-			case 4:
-				ui = new MyMemberUI();
+				ui = new AtmUI();
 				break;
 			case 0:
 				ui = new ExitUI();
@@ -35,16 +35,17 @@ public class HanaMemberUI extends BaseUI{
 	}
 	private int menu() {
 		System.out.println("-------------------------------");
-		System.out.println("\t하나은행 온라인 뱅킹 회원 시스템");
+		System.out.println("\t하나은행 내 계좌관리 시스템");
 		System.out.println("-------------------------------");
-		System.out.println("\t1. 자주 쓰는 계좌");
-		System.out.println("\t2. 계좌 서비스");
-		System.out.println("\t3. 오픈 뱅킹");
-		System.out.println("\t4. 내 회원정보 관리");
+		System.out.println("\t1. 계좌 조회");
+		System.out.println("\t2. 계좌 해지");
+		System.out.println("\t3. 계좌 수정");
+		System.out.println("\t4. 계좌 개설");
 		System.out.println("\t0. 종료");
 		System.out.println("-------------------------------");
 		int type = scanInt("메뉴 중 원하는 항목을 선택하세요 : ");
 		
 		return type;
 	}
+	
 }

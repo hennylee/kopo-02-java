@@ -1,14 +1,33 @@
-package kr.ac.kopo.ui;
+package kr.ac.kopo.ui.account;
 
-import kr.ac.kopo.ui.account.CreateAccountUI;
-import kr.ac.kopo.ui.account.DeleteAccountUI;
-import kr.ac.kopo.ui.account.SearchAccountUI;
-import kr.ac.kopo.ui.account.UpdateAccountUI;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MyAccountUI extends BaseUI {
+import kr.ac.kopo.ui.AtmUI;
+import kr.ac.kopo.ui.BaseUI;
+import kr.ac.kopo.ui.ExitUI;
+import kr.ac.kopo.ui.IBankUI;
+import kr.ac.kopo.ui.onlineUI;
+import kr.ac.kopo.vo.AccountVO;
+
+public class SearchAccountUI extends BaseUI {
 
 	@Override
 	public void execute() throws Exception {
+		
+		List<AccountVO> list = new ArrayList<>();
+		
+		list = accountService.searchMyAll();
+		
+		for(AccountVO vo : list) {
+			vo.toString();
+		}
+		
+		
+		
+		
+		
+		
 		
 		while(true) {
 			
@@ -17,16 +36,10 @@ public class MyAccountUI extends BaseUI {
 			
 			switch(type) {
 			case 1:
-				ui = new SearchAccountUI();
+				ui = new onlineUI();
 				break;
 			case 2:
-				ui = new DeleteAccountUI();
-				break;
-			case 3:
-				ui = new UpdateAccountUI();
-				break;
-			case 4:
-				ui = new CreateAccountUI();
+				ui = new AtmUI();
 				break;
 			case 0:
 				ui = new ExitUI();
