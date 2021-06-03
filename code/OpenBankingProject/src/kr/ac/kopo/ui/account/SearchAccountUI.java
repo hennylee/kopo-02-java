@@ -1,33 +1,33 @@
 package kr.ac.kopo.ui.account;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import kr.ac.kopo.ui.AtmUI;
 import kr.ac.kopo.ui.BaseUI;
 import kr.ac.kopo.ui.ExitUI;
 import kr.ac.kopo.ui.IBankUI;
-import kr.ac.kopo.ui.onlineUI;
-import kr.ac.kopo.vo.AccountVO;
 
 public class SearchAccountUI extends BaseUI {
 
 	@Override
 	public void execute() throws Exception {
 		
+		/*
 		List<AccountVO> list = new ArrayList<>();
 		
-		list = accountService.searchMyAll();
 		
+		// 나의 전체 계좌 리스트
+		startLine(new SessionFactory().getSession().getId() + "님의 전체 계좌 목록입니다.");
+		list = accountService.searchByID();
+		
+		System.out.printf("%-20s %-8s %-10s %-15s %-23s", "계좌번호", "별칭", "잔액", "자주쓰는 계좌", "이체 한도");
+		System.out.println();
 		for(AccountVO vo : list) {
-			vo.toString();
+			System.out.printf("%-20s %-8s %-20d %-15s %-20d", 
+					vo.getAccountNumber() ,vo.getAlias() , vo.getBalance() , vo.getOftenUsed(), vo.getLimitAmount());
+			System.out.println();
 		}
 		
+		endLine("");
 		
-		
-		
-		
-		
+		*/
 		
 		while(true) {
 			
@@ -36,13 +36,14 @@ public class SearchAccountUI extends BaseUI {
 			
 			switch(type) {
 			case 1:
-				ui = new onlineUI();
+				ui = new SearchAllAcntUI();
 				break;
 			case 2:
-				ui = new AtmUI();
+				ui = new SearchOneAcntUI();
 				break;
 			case 0:
 				ui = new ExitUI();
+				break;
 			}
 			
 			ui.execute();
@@ -53,11 +54,10 @@ public class SearchAccountUI extends BaseUI {
 	}
 	private int menu() {
 		System.out.println("-------------------------------");
-		System.out.println("\t하나은행 내 계좌관리 시스템");
+		System.out.println("\t하나은행 계좌 조회 시스템");
 		System.out.println("-------------------------------");
-		System.out.println("\t1. 계좌 조회");
-		System.out.println("\t2. 계좌 해지");
-		System.out.println("\t3. 계좌 수정");
+		System.out.println("\t1. 전체 계좌 조회");
+		System.out.println("\t2. 계좌 번호로 검색");
 		System.out.println("\t4. 계좌 개설");
 		System.out.println("\t0. 종료");
 		System.out.println("-------------------------------");

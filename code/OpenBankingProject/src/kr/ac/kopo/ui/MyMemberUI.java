@@ -19,6 +19,7 @@ public class MyMemberUI extends BaseUI {
 				break;
 			case 0:
 				ui = new ExitUI();
+				break;
 			}
 			
 			ui.execute();

@@ -25,6 +25,7 @@ public class HanaMemberUI extends BaseUI{
 				break;
 			case 0:
 				ui = new ExitUI();
+				break;
 			}
 			
 			ui.execute();
@@ -38,8 +39,8 @@ public class HanaMemberUI extends BaseUI{
 		System.out.println("\t하나은행 온라인 뱅킹 회원 시스템");
 		System.out.println("-------------------------------");
 		System.out.println("\t1. 자주 쓰는 계좌");
-		System.out.println("\t2. 계좌 서비스");
-		System.out.println("\t3. 오픈 뱅킹");
+		System.out.println("\t2. 하나계좌 서비스");
+		System.out.println("\t3. 통합계좌 서비스");
 		System.out.println("\t4. 내 회원정보 관리");
 		System.out.println("\t0. 종료");
 		System.out.println("-------------------------------");

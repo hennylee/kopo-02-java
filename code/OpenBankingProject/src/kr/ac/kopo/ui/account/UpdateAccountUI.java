@@ -1,51 +1,51 @@
 package kr.ac.kopo.ui.account;
 
-import kr.ac.kopo.ui.AtmUI;
+import java.util.ArrayList;
+import java.util.List;
+
 import kr.ac.kopo.ui.BaseUI;
-import kr.ac.kopo.ui.ExitUI;
-import kr.ac.kopo.ui.IBankUI;
-import kr.ac.kopo.ui.onlineUI;
+import kr.ac.kopo.util.SessionFactory;
+import kr.ac.kopo.vo.AccountVO;
 
 public class UpdateAccountUI extends BaseUI {
 
 	@Override
 	public void execute() throws Exception {
 		
-		while(true) {
-			
-			int type = menu();
-			IBankUI ui = null;
-			
-			switch(type) {
-			case 1:
-				ui = new onlineUI();
-				break;
-			case 2:
-				ui = new AtmUI();
-				break;
-			case 0:
-				ui = new ExitUI();
-			}
-			
-			ui.execute();
-			
+		List<AccountVO> list = new ArrayList<>();
+		
+		// 나의 전체 계좌 리스트
+		startLine(new SessionFactory().getSession().getId() + "님의 전체 계좌 목록입니다.");
+		list = accountService.searchByID();
+		
+		System.out.printf("%-20s %-8s %-10s %-15s %-23s", "계좌번호", "별칭", "잔액", "자주쓰는 계좌", "이체 한도");
+		System.out.println();
+		for(AccountVO vo : list) {
+			System.out.printf("%-20s %-8s %-20d %-15s %-15d", 
+					vo.getAccountNumber() ,vo.getAlias() , vo.getBalance() , vo.getOftenUsed(), vo.getLimitAmount());
+			System.out.println();
 		}
 		
+		endLine("");
 		
-	}
-	private int menu() {
-		System.out.println("-------------------------------");
-		System.out.println("\t하나은행 내 계좌관리 시스템");
-		System.out.println("-------------------------------");
-		System.out.println("\t1. 계좌 조회");
-		System.out.println("\t2. 계좌 해지");
-		System.out.println("\t3. 계좌 수정");
-		System.out.println("\t4. 계좌 개설");
-		System.out.println("\t0. 종료");
-		System.out.println("-------------------------------");
-		int type = scanInt("메뉴 중 원하는 항목을 선택하세요 : ");
+		// 계좌 별칭 서비스 실행 여부 확인
+		String choice = scanString("계좌의 별칭을 수정하시겠습니까? (Y / N)", "^[YN]*$");
 		
-		return type;
+		if(choice.equals("N") ) {
+			endLine("계좌 수정 서비스를 취소합니다.");
+			return;
+		}
+		
+		// 수정할 계좌 선택		
+		String targetAcnt = scanString("수정할 계좌의 계좌번호를 입력하세요 : ");
+		
+		// 수정 이름 입력
+		String newName = scanString("수정할 계좌 별칭을 입력하세요 (한글 5글자 미만) ", "^[가-힇]{1,5}$");
+		
+		accountService.updateAlias(targetAcnt, newName);
+		
+		endLine("계좌 별칭 수정이 완료되었습니다.");
+		
 	}
 	
 }

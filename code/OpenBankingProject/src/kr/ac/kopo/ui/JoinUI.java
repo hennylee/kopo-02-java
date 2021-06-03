@@ -44,7 +44,7 @@ public class JoinUI extends BaseUI {
 		int age = scanInt("나이를 입력하세요 : ");
 		
 		// 성별 입력
-		String sexRegex = "[FM]*$";
+		String sexRegex = "^[FM]*$";
 		String sex = scanString("성별을 입력하세요( 여성 : F, 남성 : M) : ");
 		
 		

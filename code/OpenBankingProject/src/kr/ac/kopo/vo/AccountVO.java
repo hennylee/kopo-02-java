@@ -11,12 +11,24 @@ public class AccountVO {
 	private String oftenUsed;
 	private int limitAmount;
 	private Date openingDate;
+	private int type;
 	
 	// 기본 생성자
 	public AccountVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public AccountVO(String accountNumber, int accountPW, int balance, String alias,
+			String oftenUsed, int type) {
+		super();
+		this.accountNumber = accountNumber;
+		this.accountPW = accountPW;
+		this.balance = balance;
+		this.alias = alias;
+		this.oftenUsed = oftenUsed;
+		this.type = type;
+	}
+
 	// getter/setter
 	public String getAccountNumber() {
 		return accountNumber;
@@ -27,6 +39,14 @@ public class AccountVO {
 	public String getMemberID() {
 		return memberID;
 	}
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	public void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
@@ -66,14 +86,16 @@ public class AccountVO {
 	public void setOpeningDate(Date openingDate) {
 		this.openingDate = openingDate;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "AccountVO [accountNumber=" + accountNumber + ", memberID=" + memberID + ", accountPW=" + accountPW
 				+ ", balance=" + balance + ", alias=" + alias + ", oftenUsed=" + oftenUsed + ", limitAmount="
-				+ limitAmount + ", openingDate=" + openingDate + "]";
+				+ limitAmount + ", openingDate=" + openingDate + ", type=" + type + "]";
 	}
+	
+	
+	
 	
 	
 }

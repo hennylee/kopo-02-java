@@ -1,9 +1,0 @@
-package kr.ac.kopo.dao;
-/**
- * 게시판 관리가 목적
- * @author HP
- *
- */
-public class BoardDAO {
-
-}

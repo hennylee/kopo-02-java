@@ -30,6 +30,7 @@ public class MyAccountUI extends BaseUI {
 				break;
 			case 0:
 				ui = new ExitUI();
+				break;
 			}
 			
 			ui.execute();
@@ -40,7 +41,7 @@ public class MyAccountUI extends BaseUI {
 	}
 	private int menu() {
 		System.out.println("-------------------------------");
-		System.out.println("\t하나은행 내 계좌관리 시스템");
+		System.out.println("\t하나계좌 관리시스템");
 		System.out.println("-------------------------------");
 		System.out.println("\t1. 계좌 조회");
 		System.out.println("\t2. 계좌 해지");

@@ -4,17 +4,19 @@ import java.util.Scanner;
 
 import kr.ac.kopo.service.AccountService;
 import kr.ac.kopo.service.MemberService;
+import kr.ac.kopo.service.OpenService;
 
 public abstract class BaseUI implements IBankUI {
 	private Scanner sc = new Scanner(System.in);
 	
 	protected MemberService memberService;
 	protected AccountService accountService;
-	
+	protected OpenService openService;
 	
 	public BaseUI() {
 		memberService = new MemberService();
 		accountService = new AccountService();
+		openService = new OpenService();
 	}
 	
 	protected String scanString(String msg) {

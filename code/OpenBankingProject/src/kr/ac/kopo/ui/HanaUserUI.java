@@ -19,6 +19,7 @@ public class HanaUserUI extends BaseUI {
 				break;
 			case 0:
 				ui = new ExitUI();
+				break;
 			}
 			
 			ui.execute();

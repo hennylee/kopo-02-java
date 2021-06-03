@@ -1,9 +1,0 @@
-package kr.ac.kopo.ui;
-/**
- * 매번 Scanner 쓰는 것 귀찮으니까 만들어둔 클래스이다.
- * @author HP
- *
- */
-public class BaseUI {
-
-}

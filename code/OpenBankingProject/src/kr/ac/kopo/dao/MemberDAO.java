@@ -129,7 +129,11 @@ public class MemberDAO {
 			private String joinDate; => default sysdate로 잡혀있어서 INSERT 시에는 불필요
 			 */
 			
-			rs.next();
+			boolean hasFound = rs.next();
+			
+			if(!hasFound) {
+				return null;
+			}
 			
 			String residentNumber = rs.getString("RESIDENT_NUMBER");
 			String name = rs.getString("NAME");
