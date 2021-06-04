@@ -14,7 +14,14 @@ public class BankingService extends BaseService{
 	
 	// 거래 주체 검색
 	public int searchOwner(String myAcnt, String myBank) {
-		return dao.searchOwner(myAcnt, myBank);
+		String id = session.getId(); 
+		return dao.searchOwner(myAcnt, myBank, id);
+	}
+	
+	
+	// 계좌 비밀번호 확인 checkPw(myBank, myAcnt)
+	public int checkPw(String myBank, String myAcnt, int pw) {
+		return dao.checkPw(myBank, myAcnt, pw);
 	}
 	
 	// 입금

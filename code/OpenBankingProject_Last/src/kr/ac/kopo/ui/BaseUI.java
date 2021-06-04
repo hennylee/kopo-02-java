@@ -5,7 +5,6 @@ import java.util.Scanner;
 import kr.ac.kopo.service.AccountService;
 import kr.ac.kopo.service.BankingService;
 import kr.ac.kopo.service.MemberService;
-import kr.ac.kopo.service.OpenService;
 import kr.ac.kopo.util.SessionFactory;
 
 public abstract class BaseUI implements IBankUI {
@@ -13,7 +12,6 @@ public abstract class BaseUI implements IBankUI {
 	
 	protected MemberService memberService;
 	protected AccountService accountService;
-	protected OpenService openService;
 	protected BankingService bankingService;
 	
 	protected SessionFactory session;
@@ -24,7 +22,6 @@ public abstract class BaseUI implements IBankUI {
 	public BaseUI() {
 		memberService = new MemberService();
 		accountService = new AccountService();
-		openService = new OpenService();
 		bankingService = new BankingService();
 		
 		session = new SessionFactory();

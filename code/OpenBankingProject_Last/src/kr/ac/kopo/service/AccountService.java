@@ -35,11 +35,30 @@ public class AccountService extends BaseService {
 	}
 	
 	// 계좌 번호 생성
-	public String getNewAcntNum(int type) {
+	public String getNewAcntNum(String bankName, int type) {
 		
-		// 앞 3자리 = 지점
-		String front = "111"; // 온라인 지점은 111로 고정,  오프라인 프로그램까지 만든다면 테이블 생성 필요..
+		// 앞 3자리 = 지점 + 은행
+		String front = "11"; // 온라인 지점은 11로 고정,  마지막 자리는 은행고유
 		
+		switch(bankName) {
+		case "하나":
+			front += "1";
+			break;
+		case "기업":
+			front += "1";
+			break;
+		case "국민":
+			front += "2";
+			break;
+		case "신한":
+			front += "3";
+			break;
+		case "우리":
+			front += "4";
+			break;
+		
+		}
+	
 		// 중간 9자리 => 시퀀스		
 		String middle = dao.getMidAcntNum();
 		
@@ -61,7 +80,6 @@ public class AccountService extends BaseService {
 		String last = dao.getTypeCode(product);
 		
 		String newAcntNum = front +"-" + middle +"-"  + last;
-		System.out.println(newAcntNum);
 	
 		return newAcntNum;
 		

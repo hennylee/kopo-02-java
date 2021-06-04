@@ -3,7 +3,7 @@ package kr.ac.kopo.service;
 import kr.ac.kopo.dao.MemberDAO;
 import kr.ac.kopo.vo.MemberVO;
 
-public class MemberService {
+public class MemberService extends BaseService{
 	
 	MemberDAO dao = new MemberDAO();
 	
@@ -15,6 +15,11 @@ public class MemberService {
 	public int pwExist(String id, String pw) {
 		return dao.pwExist(id, pw);
 	}	
+	
+	// 주민번호 체크 residentCheck
+	public int residentCheck(String residentNumber) {
+		return dao.residentCheck(residentNumber);
+	}
 	
 	// 회원가입
 	public void join(MemberVO member) {

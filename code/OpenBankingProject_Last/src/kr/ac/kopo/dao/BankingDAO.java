@@ -10,8 +10,39 @@ import kr.ac.kopo.util.DBConnectionFactory;
 import kr.ac.kopo.vo.BankingVO;
 import kr.ac.kopo.vo.LogVO;
 
-public class BankingDAO {
+public class BankingDAO extends BaseDAO{
 
+	// 계좌 비밀번호 확인
+	public int checkPw(String myBank, String myAcnt, int pw) {
+		
+		int cnt = -1;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT COUNT(*) FROM HANA_ACCOUNT A, BANK B WHERE B.CODE = A.BANK_CODE ");
+		sb.append("AND A.ACCOUNT_NUMBER = ? ");
+		sb.append("AND B.NAME =  ? ");
+		sb.append("AND A.ACCOUNT_PW = ? ");
+		
+		try(
+				Connection conn = new DBConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+		) {
+			pstmt.setString(1, myAcnt);
+			pstmt.setString(2, myBank);
+			pstmt.setInt(3, pw);
+			ResultSet rs = null;
+			
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt(1);
+			
+		} catch(Exception e){
+			System.out.println("idCheckDAO 에러...");
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
 	
 	// 통합 계좌에서 상대방 조회 => 존재 안하면 = 0이면 에러
 	public int searchTarget(BankingVO vo) {
@@ -44,14 +75,14 @@ public class BankingDAO {
 		return cnt;
 	}
 	
-	public int searchOwner(String myAcnt, String myBank) {
+	public int searchOwner(String myAcnt, String myBank, String id) {
 		int cnt = -1;
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("SELECT COUNT(*) ");
 		sb.append("FROM HANA_ACCOUNT A, BANK B ");
 		sb.append("WHERE B.CODE = A.BANK_CODE ");
-		sb.append("AND (B.NAME = ? AND ACCOUNT_NUMBER = ?) "); // 검색할 계좌
+		sb.append("AND (B.NAME = ? AND ACCOUNT_NUMBER = ? AND A.MEMBER_ID = ?) "); // 검색할 계좌
 		
 		try(
 				Connection conn = new DBConnectionFactory().getConnection();

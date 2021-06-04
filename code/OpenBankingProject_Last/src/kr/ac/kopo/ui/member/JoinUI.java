@@ -32,21 +32,56 @@ public class JoinUI extends BaseUI {
 		
 		
 		// 주민 번호 입력
-		String rnRegex = "\\d{6}\\-[1-4]\\d{6}";
-		String residentNumber = scanString("주민번호를 입력하세요('-' 입력 필수) : ", rnRegex);
+		boolean rnCheck = true;
+		String residentNumber = "";
+		
+		while(rnCheck) {
+			String rnRegex = "\\d{6}\\-[1-4]\\d{6}";
+			residentNumber = scanString("주민번호를 입력하세요('-' 입력 필수) : ", rnRegex);
+			
+			if(memberService.residentCheck(residentNumber) == 1) {
+				errorLine("이미 가입된 주민번호입니다.");
+			}
+			else {
+				rnCheck = false;
+			}
+		}
+		
+		String[] temp =  residentNumber.split("-");
+		
+		char[] front = temp[0].toCharArray();
+		char[] back = temp[1].toCharArray();
+		
+		
+		// 나이 계산
+		int birthYear = -1;
+		
+		if(back[0] == '1' | back[0] == '2' ) {
+			birthYear = 1900 + (front[0] - 48) * 10 + (front[1] - 48);
+		}
+		else {
+			birthYear = 2000 + (front[0] - 48) * 10 + (front[1] - 48);
+		}
+		
+		
+		int age = 2021 - birthYear;
+		
+		
+		// 성별 판정
+		String sex = "";
+		
+		if(back[0] == '2' || back[0] == '4') {
+			sex = "F";
+		}
+		else {
+			sex = "M";
+		}
+		
 		
 		// 이름 입력
 		String nameRegex = "^[ㄱ-ㅎ가-힣A-Za-z]*$";
 		String name = scanString("이름을 입력하세요 : ", nameRegex);
 		
-		
-		// 나이 입력
-		String agetRegex = "^[0-9]*$";
-		int age = scanInt("나이를 입력하세요 : ");
-		
-		// 성별 입력
-		String sexRegex = "^[FM]*$";
-		String sex = scanString("성별을 입력하세요( 여성 : F, 남성 : M) : ");
 		
 		
 		MemberVO member = new MemberVO(id, pw, residentNumber, name, age, sex);

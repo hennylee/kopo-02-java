@@ -1,7 +1,7 @@
 package kr.ac.kopo.ui.member;
 
 import kr.ac.kopo.ui.BaseUI;
-import kr.ac.kopo.ui.MemberUI;
+import kr.ac.kopo.ui.UserUI;
 import kr.ac.kopo.util.SessionFactory;
 import kr.ac.kopo.vo.MemberVO;
 
@@ -37,7 +37,7 @@ public class LoginUI extends BaseUI{
 		if(memeber != null) {
 			SessionFactory.setSession(memeber);
 			endLine("로그인에 성공하였습니다.");
-			new MemberUI().execute();
+			new UserUI().execute();
 		}
 			
 		

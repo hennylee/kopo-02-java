@@ -12,9 +12,9 @@ public class UpdateAccountUI extends BaseUI {
 	@Override
 	public void execute() throws Exception {
 		
+		// 나의 전체 계좌 리스트
 		List<AccountVO> list = new ArrayList<>();
 		
-		// 나의 전체 계좌 리스트
 		startLine(new SessionFactory().getSession().getId() + "님의 전체 계좌 목록입니다.");
 		list = accountService.searchByID();
 		
@@ -23,15 +23,13 @@ public class UpdateAccountUI extends BaseUI {
 			return;
 		}
 		
-		System.out.printf("%-20s %-10s %-10s %-10s %-20s %-10s", "계좌번호", "별칭", "잔액", "자주쓰는 계좌", "이체 한도", "은행");
-		System.out.println();
 		for(AccountVO vo : list) {
-			System.out.printf(
-					"%-20s %-10s %-12d %-13s %-19d %-10s",  vo.getAccountNumber(), vo.getAlias(), vo.getBalance(), vo.getOftenUsed(), vo.getLimitAmount(), vo.getBankName());
+			System.out.println(vo.toString());
 			System.out.println();
 		}
 		
-		endLine("");
+		endLine("총 "+ list.size() + "건 검색이 완료되었습니다.");
+		
 		
 		// 계좌 별칭 서비스 실행 여부 확인
 		String choice = scanString("계좌의 별칭을 수정하시겠습니까? (Y / N)", "^[YN]*$");
@@ -46,6 +44,14 @@ public class UpdateAccountUI extends BaseUI {
 		
 		// 수정 이름 입력
 		String newName = scanString("수정할 계좌 별칭을 입력하세요 (한글 5글자 미만) ", "^[가-힇]{1,5}$");
+		
+		// 계좌 비밀번호 확인
+		int pw = scanInt("계좌 비밀번호를 입력하세요 (* 숫자만 입력 가능)", "^[0-9]*$");
+		
+		if(bankingService.checkPw(myBank, myAcnt, pw) == 0) {
+			errorLine("비밀번호가 일치하지 않습니다.");
+			return;
+		}
 		
 		accountService.updateAlias(targetAcnt, newName);
 		

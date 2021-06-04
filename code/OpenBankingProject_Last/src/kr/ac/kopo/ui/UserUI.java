@@ -3,7 +3,7 @@ package kr.ac.kopo.ui;
 import kr.ac.kopo.ui.account.AccountUI;
 import kr.ac.kopo.ui.banking.BankingUI;
 
-public class MemberUI extends BaseUI{
+public class UserUI extends BaseUI{
 	
 	@Override
 	public void execute() throws Exception {

@@ -6,8 +6,16 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="LOG"/>
 		<list key="findhistory">
+			<item value="log"/>
+			<item value="updateAlias"/>
+			<item value="서비스 실행 전..."/>
+			<item value="isl"/>
+			<item value="return"/>
+			<item value="found"/>
+			<item value="cal"/>
+			<item value="calen"/>
 			<item value="String"/>
 			<item value="===================================================================================="/>
 			<item value="-"/>
@@ -15,14 +23,6 @@
 			<item value="반납"/>
 			<item value="대출"/>
 			<item value="삭제"/>
-			<item value="등록"/>
-			<item value="reserveList"/>
-			<item value="reserve"/>
-			<item value="도서 삭제"/>
-			<item value="(int usrCode, int bookCode, String returnDate)"/>
-			<item value="nextRsvDate"/>
-			<item value="bookList"/>
-			<item value="printM"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

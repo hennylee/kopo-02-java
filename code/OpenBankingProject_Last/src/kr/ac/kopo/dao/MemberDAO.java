@@ -8,7 +8,7 @@ import java.util.Date;
 import kr.ac.kopo.util.DBConnectionFactory;
 import kr.ac.kopo.vo.MemberVO;
 
-public class MemberDAO {
+public class MemberDAO extends BaseDAO {
 
 	// 아이디 체크
 	public int idExist(String id) {
@@ -31,6 +31,32 @@ public class MemberDAO {
 			
 		} catch(Exception e){
 			System.out.println("idCheckDAO 에러...");
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
+	// 주민번호 체크 : residentCheck(residentNumber)
+	public int residentCheck(String residentNumber) {
+		
+		int cnt = -1;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT COUNT(*) FROM HANA_MEMBER WHERE RESIDENT_NUMBER = ?");
+		
+		try(
+				Connection conn = new DBConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+		) {
+			pstmt.setString(1, residentNumber);
+			ResultSet rs = null;
+			
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt(1);
+			
+		} catch(Exception e){
+			System.out.println("residentCheck 에러...");
 			e.printStackTrace();
 		}
 		return cnt;

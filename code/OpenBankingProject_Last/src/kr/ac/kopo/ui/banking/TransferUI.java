@@ -20,6 +20,14 @@ public class TransferUI extends BaseUI{
 		vo.setOwnerAccount(myAcnt);
 		vo.setOwnerBank(myBank);
 		
+		// 계좌 비밀번호 확인
+		int pw = scanInt("계좌 비밀번호를 입력하세요 (* 숫자만 입력 가능)", "^[0-9]*$");
+		
+		if(bankingService.checkPw(myBank, myAcnt, pw) == 0) {
+			errorLine("비밀번호가 일치하지 않습니다.");
+			return;
+		}
+		
 		String msg = bankingService.transfer(vo);
 		
 		endLine(msg);

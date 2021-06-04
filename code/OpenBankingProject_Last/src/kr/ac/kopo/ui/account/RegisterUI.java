@@ -1,6 +1,9 @@
 package kr.ac.kopo.ui.account;
 
+import java.util.List;
+
 import kr.ac.kopo.ui.BaseUI;
+import kr.ac.kopo.vo.AccountVO;
 
 public class RegisterUI extends BaseUI {
 
@@ -9,8 +12,13 @@ public class RegisterUI extends BaseUI {
 
 		String msg = "";
 		
-		// 등록 가능한 통합계좌 목록입니다. 
-		new SearchRegisterUI().execute();;
+		// 등록 가능한 통합계좌 목록
+		List<AccountVO> list = accountService.notRegistered();
+		new SearchRegisterUI().execute();
+		
+		if(list.isEmpty()) {
+			return;
+		}
 		
 		// 거래할 은행 입력하기
 		String bankName = scanString("통합계좌로 등록할 은행명을 입력하세요 : ");

@@ -26,29 +26,27 @@ public class CreateAccountUI extends BaseUI {
 		int accountPW = scanInt("계좌 비밀번호를 입력하세요 (숫자 4자리) : ", "^[1-9]{1}[0-9]{3}$");
 		
 		// * 잔액 1000원 이상 채우기
-		System.out.println("[하나은행 : XXX-XXXXXX-XXXXX] 계좌로 1000원 이상 입금이 필요합니다.");
-		scanString("입금 완료시 엔터 버튼을 누르시오.");
+		errorLine("계좌 개설을 위해 1000원 이상의 잔액이 필요합니다.");
 		
 		// * 1000원 입금 처리 확인
-		int balance = 1000;//accountService.checkDeposit();
+		int balance = scanInt("통장 최초 잔액 금액을 입력하세요 : ");//accountService.checkDeposit();
 		
 		if(balance >= 1000) {
-			System.out.println(balance + "원이 입금되었습니다.");
+			errorLine(balance + "원이 입금되었습니다.");
 		}
 		else {
-			System.out.println("입금이 완료되지 않았습니다.");
+			errorLine("잔액이 부족하여 계좌 개설이 취소됩니다.");
 			return;
 		}
-		
 		
 		// 계좌 별칭 입력
 		String alias = scanString("원하시는 계좌 별칭을 입력하세요 (한글 5글자 미만) : ", "^[가-힇]{1,5}$");
 		
-		// 자주 쓰는 계좌 등록
+		// 통합 계좌 등록
 		String oftenUsed = scanString("통합 계좌로 등록하시겠습니까? (Y / N)", "^[YN]{1}");
 		
 		// 계좌번호 자동 생성
-		String accountNumber = accountService.getNewAcntNum(type);
+		String accountNumber = accountService.getNewAcntNum(bankName, type);
 		
 		AccountVO vo = new AccountVO(accountNumber, accountPW, balance, alias, oftenUsed, type, bankName);
 		
