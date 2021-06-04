@@ -44,7 +44,7 @@ public class SearchAccountUI extends BaseUI {
 		System.out.println("\t3. 은행으로 검색");
 		System.out.println("\t0. 종료");
 		System.out.println("-------------------------------");
-		int type = scanInt("ㅁ 메뉴 중 원하는 항목을 선택하세요 : ");
+		int type = scanInt("ㅁ 메뉴 중 원하는 항목을 선택하세요 : ", "^[0-3]{1}$");
 		
 		return type;
 	}

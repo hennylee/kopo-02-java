@@ -30,9 +30,8 @@ public class BankingDAO extends BaseDAO{
 			pstmt.setString(1, myAcnt);
 			pstmt.setString(2, myBank);
 			pstmt.setInt(3, pw);
-			ResultSet rs = null;
 			
-			rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			cnt = rs.getInt(1);
 			

@@ -24,7 +24,15 @@ public class RegisterUI extends BaseUI {
 		String bankName = scanString("통합계좌로 등록할 은행명을 입력하세요 : ");
 		String acntNum = scanString("통합계좌로 등록할 계좌번호를 입력하세요 : ");
 		
-		// 해당 계좌 잘 입력했는지 확인
+		
+		// 비밀번호 입력
+		int pw = scanInt("계좌 비밀번호를 입력하세요 (* 숫자만 입력 가능)", "^[0-9]*$");
+		
+		if(bankingService.checkPw(bankName, acntNum, pw) == 0) {
+			errorLine("비밀번호가 일치하지 않습니다.");
+			return;
+		}
+				
 		msg = accountService.register(bankName, acntNum);
 		
 		// 계좌를 잘못 입력한 경우

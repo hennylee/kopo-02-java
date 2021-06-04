@@ -42,18 +42,22 @@ public class UpdateAccountUI extends BaseUI {
 		// 수정할 계좌 선택		
 		String targetAcnt = scanString("수정할 계좌의 계좌번호를 입력하세요 : ");
 		
+		// 수정할 은행 선택
+		String bankName = scanString("수정할 계좌의 은행을 입력하세요 : "); 
+		
+		
 		// 수정 이름 입력
 		String newName = scanString("수정할 계좌 별칭을 입력하세요 (한글 5글자 미만) ", "^[가-힇]{1,5}$");
 		
 		// 계좌 비밀번호 확인
 		int pw = scanInt("계좌 비밀번호를 입력하세요 (* 숫자만 입력 가능)", "^[0-9]*$");
 		
-		if(bankingService.checkPw(myBank, myAcnt, pw) == 0) {
+		if(bankingService.checkPw(bankName, targetAcnt, pw) == 0) {
 			errorLine("비밀번호가 일치하지 않습니다.");
 			return;
 		}
 		
-		accountService.updateAlias(targetAcnt, newName);
+		accountService.updateAlias(targetAcnt, newName, bankName);
 		
 		endLine("계좌 별칭 수정이 완료되었습니다.");
 		

@@ -113,23 +113,23 @@ public class AccountService extends BaseService {
 	}
 	
 	// 별칭 수정하기 updateAlias
-	public void updateAlias(String targetAcnt, String newName) {
-		dao.updateAlias(targetAcnt, newName);
+	public void updateAlias(String targetAcnt, String newName, String bankName) {
+		dao.updateAlias(targetAcnt, newName, bankName);
 	}
 	
 	
 	// 계좌 해지하기 deleteAcnt(targetAcnt, targetPW)
-	public String deleteAcnt(String targetAcnt, String targetPW) {
+	public String deleteAcnt(String targetAcnt, String bankName) {
 		
 		// 잔액이 존재하는지 확인 : 존재하면, 해지 불가! 존재하지 않으면 해지 가능
-		int balance = dao.checkBalance(targetAcnt, targetPW);
+		int balance = dao.checkBalance(targetAcnt, bankName);
 		
 		if(balance > 0) {
 			System.out.println();
 			return "fail";
 		}
 		
-		dao.deleteAcnt(targetAcnt, targetPW);
+		dao.deleteAcnt(targetAcnt, bankName);
 		return "success";
 	}
 	

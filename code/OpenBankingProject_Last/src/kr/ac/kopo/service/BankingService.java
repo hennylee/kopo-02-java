@@ -20,8 +20,8 @@ public class BankingService extends BaseService{
 	
 	
 	// 계좌 비밀번호 확인 checkPw(myBank, myAcnt)
-	public int checkPw(String myBank, String myAcnt, int pw) {
-		return dao.checkPw(myBank, myAcnt, pw);
+	public int checkPw(String bankName, String targetAcnt, int pw) {
+		return dao.checkPw(bankName, targetAcnt, pw);
 	}
 	
 	// 입금

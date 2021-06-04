@@ -353,11 +353,14 @@ public class AccountDAO extends BaseDAO {
 	
 	
 	// 계좌 별칭 수정하기
-	public void updateAlias(String targetAcnt, String newName) {
+	public void updateAlias(String targetAcnt, String newName, String bankName) {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("UPDATE HANA_ACCOUNT SET ALIAS = ? WHERE ACCOUNT_NUMBER = ? AND MEMBER_ID = ?");
+		sb.append("UPDATE HANA_ACCOUNT SET ALIAS = ? ");
+		sb.append("WHERE ACCOUNT_NUMBER = ? ");
+		sb.append("AND BANK_CODE = (SELECT CODE FROM BANK WHERE NAME = ? ) ");
+		sb.append("AND MEMBER_ID = ? ");
 		
 		try(
 				Connection conn = new DBConnectionFactory().getConnection();
@@ -365,7 +368,8 @@ public class AccountDAO extends BaseDAO {
 		) {
 			pstmt.setString(1, newName);
 			pstmt.setString(2, targetAcnt);
-			pstmt.setString(3, session.getId());
+			pstmt.setString(3,  bankName);
+			pstmt.setString(4, session.getId());
 			
 			pstmt.executeUpdate();
 			
@@ -377,20 +381,24 @@ public class AccountDAO extends BaseDAO {
 	}
 	
 	// 계좌 잔액 존재하는지 확인 : checkBalance(targetAcnt, targetPW)
-	public int checkBalance(String targetAcnt, String targetPW) {
+	public int checkBalance(String targetAcnt, String bankName) {
 		
 		int balance = -1;
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("SELECT BALANCE FROM HANA_ACCOUNT ");
-		sb.append("WHERE ACCOUNT_NUMBER = ? AND ACCOUNT_PW = ? AND MEMBER_ID = ?");
+		sb.append("SELECT A.BALANCE ");
+		sb.append("FROM HANA_ACCOUNT A, HANA_MEMBER M, BANK B, HANA_PRODUCT P ");
+		sb.append("WHERE A.MEMBER_ID = M.ID AND A.BANK_CODE = B.CODE AND A.TYPE = P.CODE ");
+		sb.append("AND A.ACCOUNT_NUMBER = ? ");
+		sb.append("AND B.NAME = ? ");
+		sb.append("AND M.ID = ? ");
 		
 		try(
 				Connection conn = new DBConnectionFactory().getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sb.toString());
 		) {
 			pstmt.setString(1, targetAcnt);
-			pstmt.setString(2, targetPW);
+			pstmt.setString(2, bankName);
 			pstmt.setString(3, session.getId());
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -414,7 +422,10 @@ public class AccountDAO extends BaseDAO {
 	public void deleteAcnt(String targetAcnt, String targetPW) {
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("DELETE FROM HANA_ACCOUNT WHERE ACCOUNT_NUMBER = ? AND ACCOUNT_PW = ? AND MEMBER_ID = ? ");
+		sb.append("DELETE FROM HANA_ACCOUNT ");
+		sb.append("WHERE ACCOUNT_NUMBER = ? ");
+		sb.append("AND BANK_CODE = (SELECT * FROM BANK WHERE NAME = ?) ");
+		sb.append("AND MEMBER_ID = ? ");
 		
 		try(
 				Connection conn = new DBConnectionFactory().getConnection();
@@ -491,8 +502,8 @@ public class AccountDAO extends BaseDAO {
 		
 		sb.append("UPDATE HANA_ACCOUNT SET OFTEN_USED = 'Y' ");
 		sb.append("WHERE BANK_CODE = (SELECT CODE FROM BANK WHERE NAME = ?) ");
-		sb.append("AND ACCOUNT_NUMBER = ?' ");
-		sb.append("AND MEMBER_ID = ?' ");
+		sb.append("AND ACCOUNT_NUMBER = ? ");
+		sb.append("AND MEMBER_ID = ? ");
 		
 		try(
 				Connection conn = new DBConnectionFactory().getConnection();
