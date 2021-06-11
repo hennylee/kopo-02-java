@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="kr.ac.kopo.service.SessionServiceFactory"/>
-    <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
-    <fullyQualifiedTypeName name="kr.ac.kopo.util.lineUtil"/>
-    <fullyQualifiedTypeName name="kr.ac.kopo.util.scanUtil"/>
-    <fullyQualifiedTypeName name="kr.ac.kopo.ui.ExitUI"/>
-    <fullyQualifiedTypeName name="javax.swing.UIClientPropertyKey"/>
-    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="kr.ac.kopo.ui.IBankUI"/>
-    <fullyQualifiedTypeName name="kr.ac.kopo.ui.account.UpdateAccountUI"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.util.DBConnectionFactory"/>
@@ -57,7 +47,17 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.vo.LogVO"/>
     <fullyQualifiedTypeName name="java.util.IllegalFormatCodePointException"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.service.BaseService"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.dao.BaseDAO"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.spi.AbstractResourceBundleProvider"/>
+    <fullyQualifiedTypeName name="intro.duck.FlyWithWings"/>
+    <fullyQualifiedTypeName name="intro.duck.MallardDuck"/>
+    <fullyQualifiedTypeName name="intro.duck.FlyBehavior"/>
+    <fullyQualifiedTypeName name="intro.duck.FlyNoWay"/>
+    <fullyQualifiedTypeName name="intro.duck.QuackBehavior"/>
+    <fullyQualifiedTypeName name="intro.duck.Quack"/>
+    <fullyQualifiedTypeName name="intro.duck.Duck"/>
+    <fullyQualifiedTypeName name="intro.duck.ModelDuck"/>
+    <fullyQualifiedTypeName name="intro.duck.FlyRocketPowered"/>
 </qualifiedTypeNameHistroy>
