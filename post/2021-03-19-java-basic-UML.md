@@ -4,6 +4,9 @@
 - [Help - install new Software]
 - `http://takezoe.github.io/amateras-update-site` - [엔터] - Modeler만 설치하기 - install Anyway
 
+![image](https://user-images.githubusercontent.com/77392444/127274766-41eb0e6f-42d4-4f44-a33b-003f405f559f.png)
+
+
 - installer로 이클립스를 설치한 경우 이 방법으로만 설치 가능하다.
 
 
